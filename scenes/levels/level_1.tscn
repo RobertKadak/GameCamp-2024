@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpn7jijdmky8e"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ntyst"]
+vertices = PackedVector2Array(864.938, 449.969, -864.008, 445.023, -864.977, -470.023, 860.047, -473.969)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-875, -480, 870, -484, 875, 460, -874, 455)])
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_knp82"]
+distance = -46.5
+
+[node name="level1" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_ntyst")
+
+[node name="walls" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/StaticBody2D"]
+scale = Vector2(10, 10)
+shape = SubResource("WorldBoundaryShape2D_knp82")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="walls/StaticBody2D"]
+position = Vector2(400, 0)
+rotation = -1.5708
+scale = Vector2(10, 10)
+shape = SubResource("WorldBoundaryShape2D_knp82")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="walls/StaticBody2D"]
+rotation = 3.14159
+scale = Vector2(10, 10)
+shape = SubResource("WorldBoundaryShape2D_knp82")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="walls/StaticBody2D"]
+position = Vector2(-400, 0)
+rotation = 1.5708
+scale = Vector2(10, 10)
+shape = SubResource("WorldBoundaryShape2D_knp82")
