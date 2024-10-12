@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1a3v0dotogeo"]
+
+[ext_resource type="Texture2D" uid="uid://c8hy7mgxpn7cc" path="res://assets/box.png" id="1_govr5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nje4h"]
+size = Vector2(212, 188)
+
+[node name="Object" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_govr5")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_nje4h")
