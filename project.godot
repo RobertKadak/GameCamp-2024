@@ -11,14 +11,16 @@ config_version=5
 [application]
 
 config/name="GameCamp-2024"
+run/main_scene="res://Menu folder/menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=800
-window/size/viewport_height=800
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/size/resizable=false
+window/stretch/mode="viewport"
 
 [input]
 
