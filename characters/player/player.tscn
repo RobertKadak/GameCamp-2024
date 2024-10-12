@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_cwafh"]
 [ext_resource type="Texture2D" uid="uid://dfi1dcsbsqvek" path="res://characters/player/cat_walk1.png" id="2_5byhn"]
 [ext_resource type="Texture2D" uid="uid://dpmp3kgpb818y" path="res://characters/player/cat_clawattack1.png" id="2_7kjuw"]
-[ext_resource type="Texture2D" uid="uid://s0fbcytcepcn" path="res://characters/player/player_melee_1.png" id="2_ctsnp"]
 [ext_resource type="Texture2D" uid="uid://dd7f3qbbqqxm5" path="res://characters/player/ranged/cat_ranged1.png" id="2_xbiry"]
 [ext_resource type="Texture2D" uid="uid://i2pbr6rnrmx6" path="res://characters/player/cat_clawattack2.png" id="3_22t5q"]
-[ext_resource type="Texture2D" uid="uid://bjw1dqmpw1dj6" path="res://characters/player/player_melee_2.png" id="3_m4d4m"]
 [ext_resource type="Texture2D" uid="uid://c62imnkhtspp" path="res://characters/player/cat_walk2.png" id="3_nlxon"]
 [ext_resource type="Texture2D" uid="uid://ct58yg1352ksx" path="res://characters/player/ranged/cat_ranged2.png" id="3_u1u21"]
+[ext_resource type="Texture2D" uid="uid://bf4kyeu4to1e2" path="res://assets/attackparticle2.png" id="8_kne5k"]
+[ext_resource type="Texture2D" uid="uid://cvmqo4lpsu1kx" path="res://assets/attackparticle1.png" id="9_qtmb8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wbfjh"]
 animations = [{
@@ -53,17 +53,14 @@ size = Vector2(128, 128)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ctsnp")
+"texture": ExtResource("8_kne5k")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_m4d4m")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_ctsnp")
+"texture": ExtResource("9_qtmb8")
 }],
 "loop": true,
 "name": &"melee",
-"speed": 17.0
+"speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ae8bp"]
@@ -88,6 +85,8 @@ shape = SubResource("RectangleShape2D_f42hs")
 collision_mask = 3
 
 [node name="MeleeAnimatedSprite2D" type="AnimatedSprite2D" parent="Melee"]
+position = Vector2(-4.76837e-07, -5.00679e-06)
+scale = Vector2(0.256, 0.256)
 sprite_frames = SubResource("SpriteFrames_1hmyh")
 animation = &"melee"
 frame_progress = 0.580207
