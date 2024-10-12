@@ -60,6 +60,7 @@ func discharge_ranged(delta: float):
 		_animated_sprite.stop()
 		charging_ranged_attack = false
 		_animated_sprite.play("walk")
+		charging_ranged_timer = 0
 
 func melee_animations(velocity: Vector2) -> void:
 	var position_to_mouse = get_global_mouse_position() - global_position
