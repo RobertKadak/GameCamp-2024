@@ -1,4 +1,4 @@
-extends Node2D # Might need to be changed
+extends CharacterBody2D # Might need to be changed
 
 
 @export var speed = 400

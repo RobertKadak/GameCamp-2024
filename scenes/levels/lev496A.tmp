@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpn7jijdmky8e"]
+[gd_scene load_steps=7 format=3 uid="uid://cpn7jijdmky8e"]
 
 [ext_resource type="PackedScene" uid="uid://cjnjct76im3qy" path="res://characters/player/player.tscn" id="1_nkpfc"]
 [ext_resource type="PackedScene" uid="uid://bep843k7yixqs" path="res://scenes/enemy.tscn" id="2_7dsv0"]
@@ -8,12 +8,16 @@ vertices = PackedVector2Array(928, 516.75, -934, 516.75, -934, -511.75, 928, -51
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-961, -539, 957, -542, 959, 542, -960, 536, -960.813, -337.367)])
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vt1pw"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wk18b"]
 size = Vector2(21.1639, 2.325)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hh3uy"]
 
 [node name="level1" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_nkpfc")]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(-1, -1)
@@ -22,6 +26,7 @@ navigation_polygon = SubResource("NavigationPolygon_d840p")
 [node name="walls" type="Node2D" parent="NavigationRegion2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D/walls"]
+physics_material_override = SubResource("PhysicsMaterial_vt1pw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/walls/StaticBody2D"]
 position = Vector2(-1, 550)
@@ -46,8 +51,6 @@ scale = Vector2(60, 2)
 shape = SubResource("RectangleShape2D_hh3uy")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="Player" parent="." instance=ExtResource("1_nkpfc")]
 
 [node name="enemy" parent="." node_paths=PackedStringArray("target_to_chase") instance=ExtResource("2_7dsv0")]
 target_to_chase = NodePath("../Player")
