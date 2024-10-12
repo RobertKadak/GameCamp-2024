@@ -4,9 +4,14 @@ extends CharacterBody2D # Might need to be changed
 @export var speed = 400
 @export var health = 100
 @export var melee_attack_range = 200
+@export var charging_ranged_attack = false
+@export var charging_ranged_timer = 0
+@export var charging_ranged_timer_required = 5
 
 @onready var _animated_sprite = $WalkingAnimatedSprite2D
 @onready var _melee = $Melee
+@onready var ranged_projectile = preload("res://characters/player/ranged/projectile.tscn")
+@onready var world = get_parent()
 
 
 # Called when the node enters the scene tree for the first time.
@@ -18,9 +23,35 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var velocity = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
-	melee_animations(velocity)
-	movement_animations(velocity)
-	movement(velocity, delta)
+	if not charging_ranged_attack:
+		melee_animations(velocity)
+		movement_animations(velocity)
+		movement(velocity, delta)
+		charge_ranged()
+	else:
+		discharge_ranged(delta)	
+
+func charge_ranged():
+	if Input.is_action_just_pressed("attack_ranged"):
+		charging_ranged_attack = true
+		charging_ranged_timer = 0
+		_animated_sprite.play("ranged")
+
+func discharge_ranged(delta: float):
+	charging_ranged_timer += delta
+	if Input.is_action_just_released("attack_ranged"):
+		if charging_ranged_timer > charging_ranged_timer_required:
+			var projectile = ranged_projectile.instantiate()
+			world.add_child(projectile)
+			
+			var position_to_mouse = get_global_mouse_position() - global_position
+			projectile.global_position = global_position
+			projectile.direction = position_to_mouse.normalized()
+		else:
+			pass # Attack failed
+		_animated_sprite.stop()
+		charging_ranged_attack = false
+		_animated_sprite.play("walk")
 
 func melee_animations(velocity: Vector2) -> void:
 	var position_to_mouse = get_global_mouse_position() - global_position
