@@ -21,7 +21,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"melee",
-"speed": 10.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -78,7 +78,8 @@ charging_ranged_timer_required = 1
 position = Vector2(8.58307e-06, 0.499993)
 scale = Vector2(0.129253, 0.133307)
 sprite_frames = SubResource("SpriteFrames_wbfjh")
-animation = &"walk"
+animation = &"melee"
+frame_progress = 0.676393
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_f42hs")
