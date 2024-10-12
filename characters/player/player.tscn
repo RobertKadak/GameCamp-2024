@@ -57,6 +57,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("9_qtmb8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kne5k")
 }],
 "loop": true,
 "name": &"melee",
@@ -89,7 +92,7 @@ position = Vector2(-4.76837e-07, -5.00679e-06)
 scale = Vector2(0.256, 0.256)
 sprite_frames = SubResource("SpriteFrames_1hmyh")
 animation = &"melee"
-frame_progress = 0.580207
+frame_progress = 0.505308
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Melee"]
 shape = SubResource("RectangleShape2D_ae8bp")
