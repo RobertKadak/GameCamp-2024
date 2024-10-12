@@ -49,6 +49,9 @@ func _process(delta: float) -> void:
 		charge_ranged()
 	else:
 		discharge_ranged(delta)
+	
+	if charging_ranged_timer > charging_ranged_timer_required and Input.is_action_pressed("attack_ranged"):
+		_animated_sprite.play("ranged_ready")
 
 func dash_movement(velocity: Vector2):
 	if dash_timeout_timer > dash_distance:
