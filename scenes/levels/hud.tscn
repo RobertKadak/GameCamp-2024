@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://ek3gk38x6fy5"]
+[gd_scene load_steps=5 format=3 uid="uid://ek3gk38x6fy5"]
 
-[ext_resource type="Script" path="res://scripts/charge_label.gd" id="1_fqkqi"]
 [ext_resource type="Script" path="res://scripts/stopwatch_label.gd" id="2_l5hw3"]
 [ext_resource type="Script" path="res://scripts/health_value.gd" id="3_hn4f8"]
 
@@ -9,10 +8,6 @@ font_size = 24
 font_color = Color(1, 0, 1, 1)
 outline_color = Color(0.996078, 0, 1, 1)
 shadow_color = Color(1, 0, 0.972549, 0)
-
-[sub_resource type="LabelSettings" id="LabelSettings_v8obx"]
-font_size = 24
-font_color = Color(1, 0, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_g1pgc"]
 font_size = 24
@@ -30,16 +25,6 @@ offset_bottom = 35.0
 scale = Vector2(1.38282, 1.70745)
 text = "Health:"
 label_settings = SubResource("LabelSettings_or2ie")
-
-[node name="Charge" type="Label" parent="Display"]
-offset_left = 6.0
-offset_top = 59.0
-offset_right = 94.0
-offset_bottom = 93.0
-scale = Vector2(1.32, 1.4)
-text = "Charge:"
-label_settings = SubResource("LabelSettings_v8obx")
-script = ExtResource("1_fqkqi")
 
 [node name="Stopwatch_label" type="Label" parent="Display" groups=["StopWatch"]]
 anchors_preset = 5

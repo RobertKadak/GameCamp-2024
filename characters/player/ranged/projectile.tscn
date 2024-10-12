@@ -1,17 +1,17 @@
 [gd_scene load_steps=6 format=3 uid="uid://f3ikjwfuh1vw"]
 
 [ext_resource type="Script" path="res://characters/player/ranged/projectile.gd" id="1_3lpk2"]
-[ext_resource type="Texture2D" uid="uid://ielg4416rq4a" path="res://characters/player/ranged/ranged_projectile.png" id="1_x368l"]
-[ext_resource type="Texture2D" uid="uid://k7krrstb4k0k" path="res://characters/player/ranged/ranged_projectile_rotated.png" id="2_f3v58"]
+[ext_resource type="Texture2D" uid="uid://cm6g51a50ohr6" path="res://characters/player/ranged/vomit_ball.png" id="2_a3urj"]
+[ext_resource type="Texture2D" uid="uid://ct6egcno5bg25" path="res://characters/player/ranged/vomit_ball2.png" id="3_r1mr8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vodm2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_x368l")
+"texture": ExtResource("2_a3urj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_f3v58")
+"texture": ExtResource("3_r1mr8")
 }],
 "loop": true,
 "name": &"default",
@@ -26,8 +26,9 @@ collision_mask = 3
 script = ExtResource("1_3lpk2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 0)
+scale = Vector2(0.325, 0.325)
 sprite_frames = SubResource("SpriteFrames_vodm2")
-frame_progress = 0.631936
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8c07t")
