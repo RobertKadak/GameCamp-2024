@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cpn7jijdmky8e"]
+[gd_scene load_steps=12 format=3 uid="uid://cpn7jijdmky8e"]
 
 [ext_resource type="Script" path="res://scenes/levels/level_1.gd" id="1_1j3sy"]
 [ext_resource type="PackedScene" uid="uid://ek3gk38x6fy5" path="res://scenes/levels/hud.tscn" id="1_lglxl"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" path="res://scenes/levels/stop_watch.tscn" id="3_hvndn"]
 [ext_resource type="Texture2D" uid="uid://c00224xebfjt7" path="res://assets/fuckass_room.png" id="3_xcyde"]
 [ext_resource type="PackedScene" uid="uid://dcybrwwl41s8p" path="res://scenes/next_level.tscn" id="7_tcj8h"]
+[ext_resource type="PackedScene" path="res://scenes/object.tscn" id="8_xilvg"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_d840p"]
 vertices = PackedVector2Array(928, 516.75, -934, 516.75, -934, -511.75, 928, -511.75)
@@ -18,8 +19,12 @@ size = Vector2(21.1639, 2.325)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hh3uy"]
 
-[node name="level1" type="Node2D"]
+[node name="level1" type="Node2D" node_paths=PackedStringArray("box_region_start", "box_region_end", "box_region_start2", "box_region_end2")]
 script = ExtResource("1_1j3sy")
+box_region_start = NodePath("BoxStart")
+box_region_end = NodePath("BoxEnd")
+box_region_start2 = NodePath("BoxStart2")
+box_region_end2 = NodePath("BoxEnd2")
 
 [node name="StopWatch" parent="." groups=["StopWatch"] instance=ExtResource("3_hvndn")]
 
@@ -59,6 +64,7 @@ scale = Vector2(60, 2)
 shape = SubResource("RectangleShape2D_hh3uy")
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("1_nkpfc")]
+position = Vector2(845, 273)
 
 [node name="enemy" parent="." node_paths=PackedStringArray("target_to_chase") instance=ExtResource("2_7dsv0")]
 target_to_chase = NodePath("../Player")
@@ -69,3 +75,18 @@ texture = ExtResource("3_xcyde")
 
 [node name="nextLevel" parent="." instance=ExtResource("7_tcj8h")]
 position = Vector2(895, -33)
+
+[node name="Object" parent="." instance=ExtResource("8_xilvg")]
+position = Vector2(10, -401)
+
+[node name="BoxStart" type="Node2D" parent="."]
+position = Vector2(-670, -248)
+
+[node name="BoxEnd" type="Node2D" parent="."]
+position = Vector2(-111, 246)
+
+[node name="BoxStart2" type="Node2D" parent="."]
+position = Vector2(109, -248)
+
+[node name="BoxEnd2" type="Node2D" parent="."]
+position = Vector2(658, 246)
