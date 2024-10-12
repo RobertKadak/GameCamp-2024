@@ -10,3 +10,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func is_level_clear():
+	var enemies = get_tree().get_nodes_in_group("Enemy")
+	return len(enemies) == 0
