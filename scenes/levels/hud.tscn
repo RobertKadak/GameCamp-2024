@@ -1,28 +1,43 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqmf6iaw6o1er"]
+[gd_scene load_steps=5 format=3 uid="uid://bqmf6iaw6o1er"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_tk4gs"]
 
-[node name="HUD" type="Node2D" node_paths=PackedStringArray("Stopwatch_label")]
+[sub_resource type="LabelSettings" id="LabelSettings_or2ie"]
+font_size = 24
+font_color = Color(1, 0, 1, 1)
+outline_color = Color(0.996078, 0, 1, 1)
+shadow_color = Color(1, 0, 0.972549, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_v8obx"]
+font_size = 24
+font_color = Color(1, 0, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_g1pgc"]
+font_size = 24
+font_color = Color(1, 0, 1, 1)
+
+[node name="HUD" type="Node2D"]
 script = ExtResource("1_tk4gs")
-Stopwatch_label = NodePath("Display/Stopwatch_label")
 
 [node name="Display" type="CanvasLayer" parent="."]
 
 [node name="Health" type="Label" parent="Display"]
-offset_left = 2.0
+offset_left = 6.0
 offset_top = 1.0
-offset_right = 58.0
-offset_bottom = 24.0
+offset_right = 90.0
+offset_bottom = 35.0
 scale = Vector2(1.38282, 1.70745)
 text = "Health:"
+label_settings = SubResource("LabelSettings_or2ie")
 
 [node name="Charge" type="Label" parent="Display"]
-offset_left = 2.0
-offset_top = 35.0
-offset_right = 62.0
-offset_bottom = 58.0
+offset_left = 6.0
+offset_top = 59.0
+offset_right = 94.0
+offset_bottom = 93.0
 scale = Vector2(1.32, 1.4)
 text = "Charge:"
+label_settings = SubResource("LabelSettings_v8obx")
 
 [node name="Stopwatch_label" type="Label" parent="Display" groups=["StopWatch"]]
 anchors_preset = 5
@@ -33,3 +48,4 @@ offset_right = 20.0
 offset_bottom = 23.0
 grow_horizontal = 2
 text = "00:00"
+label_settings = SubResource("LabelSettings_g1pgc")
