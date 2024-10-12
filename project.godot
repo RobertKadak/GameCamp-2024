@@ -15,6 +15,10 @@ run/main_scene="res://Menu folder/menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Hud="*res://scenes/levels/hud.tscn"
+
 [display]
 
 window/size/viewport_width=1920
@@ -27,6 +31,7 @@ window/stretch/mode="viewport"
 [global_group]
 
 Enemy=""
+StopWatch=""
 
 [input]
 
