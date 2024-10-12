@@ -30,8 +30,6 @@ func _process(delta: float) -> void:
 		charge_ranged()
 	else:
 		discharge_ranged(delta)	
-	
-	print(delta)
 
 func charge_ranged():
 	if Input.is_action_just_pressed("attack_ranged"):
