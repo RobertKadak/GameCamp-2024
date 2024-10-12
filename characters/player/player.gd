@@ -16,6 +16,7 @@ extends CharacterBody2D # Might need to be changed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	_animated_sprite.play("walk")
 	_melee.get_node("MeleeAnimatedSprite2D").stop()
 	_melee.get_node("MeleeAnimatedSprite2D").hide()
 
