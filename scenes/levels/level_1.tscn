@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cpn7jijdmky8e"]
 
-[ext_resource type="PackedScene" uid="uid://cjnjct76im3qy" path="res://characters/player/player.tscn" id="1_nkpfc"]
-[ext_resource type="PackedScene" uid="uid://bep843k7yixqs" path="res://scenes/enemy.tscn" id="2_7dsv0"]
+[ext_resource type="PackedScene" uid="uid://cjnjct76im3qy" path="res://scenes/enteties/player.tscn" id="1_nkpfc"]
+[ext_resource type="PackedScene" uid="uid://bep843k7yixqs" path="res://scenes/enteties/enemy.tscn" id="2_7dsv0"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_d840p"]
 vertices = PackedVector2Array(928, 516.75, -934, 516.75, -934, -511.75, 928, -511.75)

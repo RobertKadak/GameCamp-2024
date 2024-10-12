@@ -1,0 +1,53 @@
+[gd_scene load_steps=11 format=3 uid="uid://cjnjct76im3qy"]
+
+[ext_resource type="Script" path="res://scripts/entity_scripts/player.gd" id="1_yastx"]
+[ext_resource type="Texture2D" uid="uid://dk6i1y2q74sli" path="res://assets/player_walk_1.png" id="2_ipeh4"]
+[ext_resource type="Texture2D" uid="uid://dusmyi12gw21t" path="res://assets/player_walk_2.png" id="3_yjjl1"]
+[ext_resource type="PackedScene" uid="uid://c4sbkaqenf1dt" path="res://scenes/components/melee.tscn" id="4_l16fv"]
+[ext_resource type="Script" path="res://scripts/component_scripts/hitbox.gd" id="4_s3wrq"]
+[ext_resource type="PackedScene" uid="uid://dg2i7inyaqiov" path="res://scenes/components/health.tscn" id="5_hqh8f"]
+[ext_resource type="PackedScene" uid="uid://dl7yl4orupcnl" path="res://scenes/components/hitbox.tscn" id="6_0xlog"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wbfjh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ipeh4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yjjl1")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f42hs"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kmhwu"]
+size = Vector2(135.455, 128.182)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+scale = Vector2(0.55, 0.55)
+script = ExtResource("1_yastx")
+
+[node name="WalkingAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wbfjh")
+animation = &"walk"
+frame_progress = 0.977247
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_f42hs")
+
+[node name="Melee" parent="." instance=ExtResource("4_l16fv")]
+visible = false
+
+[node name="Health" parent="." instance=ExtResource("5_hqh8f")]
+
+[node name="Area2D" parent="." node_paths=PackedStringArray("health") instance=ExtResource("6_0xlog")]
+script = ExtResource("4_s3wrq")
+health = NodePath("../Health")
+
+[node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_kmhwu")

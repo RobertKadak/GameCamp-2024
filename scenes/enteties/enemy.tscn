@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://bep843k7yixqs"]
+
+[ext_resource type="Script" path="res://scripts/entity_scripts/enemy.gd" id="1_kmofy"]
+[ext_resource type="Script" path="res://scripts/component_scripts/hitbox.gd" id="2_rqld6"]
+[ext_resource type="Texture2D" uid="uid://dw5dmyjvtghis" path="res://icon.svg" id="2_ymj8e"]
+[ext_resource type="PackedScene" uid="uid://dg2i7inyaqiov" path="res://scenes/components/health.tscn" id="3_v1yfp"]
+[ext_resource type="PackedScene" uid="uid://dl7yl4orupcnl" path="res://scenes/components/hitbox.tscn" id="4_ql7h7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n1a7s"]
+size = Vector2(80.1136, 77.5682)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0v3hb"]
+size = Vector2(166.364, 166.364)
+
+[node name="enemy" type="CharacterBody2D"]
+scale = Vector2(0.55, 0.55)
+collision_layer = 2
+script = ExtResource("1_kmofy")
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+top_level = true
+shape = SubResource("RectangleShape2D_n1a7s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ymj8e")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
+
+[node name="Health" parent="." instance=ExtResource("3_v1yfp")]
+maxHealth = 10
+
+[node name="Area2D" parent="." node_paths=PackedStringArray("health") instance=ExtResource("4_ql7h7")]
+script = ExtResource("2_rqld6")
+health = NodePath("../Health")
+
+[node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_0v3hb")

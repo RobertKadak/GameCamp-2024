@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @export var target_to_chase: CharacterBody2D
-@export var health : int = 5 
 
 const speed = 180.0
 

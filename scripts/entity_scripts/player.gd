@@ -2,7 +2,6 @@ extends CharacterBody2D # Might need to be changed
 
 
 @export var speed = 400
-@export var health = 100
 @export var melee_attack_range = 200
 
 @onready var _animated_sprite = $WalkingAnimatedSprite2D
