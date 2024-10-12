@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://cpn7jijdmky8e"]
+[gd_scene load_steps=11 format=3 uid="uid://cpn7jijdmky8e"]
 
+[ext_resource type="Script" path="res://scenes/levels/level_1.gd" id="1_1j3sy"]
 [ext_resource type="PackedScene" uid="uid://ek3gk38x6fy5" path="res://scenes/levels/hud.tscn" id="1_lglxl"]
 [ext_resource type="PackedScene" uid="uid://cjnjct76im3qy" path="res://characters/player/player.tscn" id="1_nkpfc"]
 [ext_resource type="PackedScene" uid="uid://4tbot0pb2xdg" path="res://scenes/enemy.tscn" id="2_7dsv0"]
 [ext_resource type="PackedScene" path="res://scenes/levels/stop_watch.tscn" id="3_hvndn"]
 [ext_resource type="Texture2D" uid="uid://c00224xebfjt7" path="res://assets/fuckass_room.png" id="3_xcyde"]
+[ext_resource type="PackedScene" uid="uid://dcybrwwl41s8p" path="res://scenes/next_level.tscn" id="7_tcj8h"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_d840p"]
 vertices = PackedVector2Array(928, 516.75, -934, 516.75, -934, -511.75, 928, -511.75)
@@ -17,6 +19,7 @@ size = Vector2(21.1639, 2.325)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hh3uy"]
 
 [node name="level1" type="Node2D"]
+script = ExtResource("1_1j3sy")
 
 [node name="StopWatch" parent="." groups=["StopWatch"] instance=ExtResource("3_hvndn")]
 
@@ -55,7 +58,7 @@ rotation = 1.5708
 scale = Vector2(60, 2)
 shape = SubResource("RectangleShape2D_hh3uy")
 
-[node name="Player" parent="." instance=ExtResource("1_nkpfc")]
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_nkpfc")]
 
 [node name="enemy" parent="." node_paths=PackedStringArray("target_to_chase") instance=ExtResource("2_7dsv0")]
 target_to_chase = NodePath("../Player")
@@ -63,3 +66,6 @@ target_to_chase = NodePath("../Player")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 show_behind_parent = true
 texture = ExtResource("3_xcyde")
+
+[node name="nextLevel" parent="." instance=ExtResource("7_tcj8h")]
+position = Vector2(895, -33)

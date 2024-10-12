@@ -96,7 +96,7 @@ collision_layer = 2
 script = ExtResource("1_cwafh")
 charging_ranged_timer_required = 1
 
-[node name="WalkingAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="WalkingAnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Player"]]
 position = Vector2(8.58307e-06, 0.499993)
 scale = Vector2(0.129253, 0.133307)
 sprite_frames = SubResource("SpriteFrames_wbfjh")

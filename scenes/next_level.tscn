@@ -5,6 +5,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mo4cm"]
 
 [node name="nextLevel" type="Area2D"]
+collision_mask = 3
+monitoring = false
 script = ExtResource("1_y3i32")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
