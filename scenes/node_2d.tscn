@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsla1dutnuewx"]
+
+[ext_resource type="Script" path="res://scripts/node_2d.gd" id="1_tmeau"]
+[ext_resource type="Texture2D" uid="uid://dw5dmyjvtghis" path="res://icon.svg" id="2_jwicp"]
+
+[node name="Node2D" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_tmeau")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_jwicp")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-60, -57, 61, -57, 61, 58, -59, 57)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
