@@ -19,6 +19,7 @@ extends CharacterBody2D # Might need to be changed
 
 @onready var _animated_sprite = $WalkingAnimatedSprite2D
 @onready var _melee = $Melee
+@onready var _collision_shape_2D = $CollisionShape2D
 @onready var ranged_projectile = preload("res://characters/player/ranged/projectile.tscn")
 @onready var world = get_parent()
 
@@ -52,9 +53,12 @@ func _process(delta: float) -> void:
 func dash_movement(velocity: Vector2):
 	if dash_timeout_timer > dash_distance:
 		speed_multi = 1
+		if _collision_shape_2D.disabled:
+			_collision_shape_2D.disabled = false
 	
 	if Input.is_action_just_pressed("move_dash"):
 		if dash_timeout < dash_timeout_timer:
+			_collision_shape_2D.disabled = true
 			speed_multi = dash_speed
 			dash_timeout_timer = 0
 
