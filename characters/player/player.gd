@@ -1,4 +1,4 @@
-extends Node2D # Might need to be changed
+extends CharacterBody2D # Might need to be changed
 
 
 @export var speed = 400
@@ -45,4 +45,4 @@ func movement_animations(velocity: Vector2) -> void:
 		_animated_sprite.play("walk")
 
 func movement(velocity: Vector2, delta: float) -> void:
-	position += velocity * speed * delta
+	move_and_collide(velocity * speed * delta)
