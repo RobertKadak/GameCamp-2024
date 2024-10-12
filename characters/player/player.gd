@@ -23,9 +23,10 @@ func _process(delta: float) -> void:
 	movement(velocity, delta)
 
 func melee_animations(velocity: Vector2) -> void:
-	if not velocity.is_zero_approx():
-		var melee_attack_position = velocity.normalized() * melee_attack_range
-		_melee.position = melee_attack_position
+	var position_to_mouse = get_global_mouse_position() - global_position
+	
+	var melee_attack_position = position_to_mouse.normalized() * melee_attack_range
+	_melee.position = melee_attack_position
 	
 	if Input.is_action_just_pressed("attack_melee"):
 		_melee.get_node("MeleeAnimatedSprite2D").show()
