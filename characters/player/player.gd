@@ -9,7 +9,13 @@ extends CharacterBody2D # Might need to be changed
 @export var charging_ranged_timer_required = 5
 
 @export var melee_timeout = .7
-@export var melee_timeout_counter = 100
+@export var melee_timeout_counter = 0
+
+@export var dash_distance = .08
+@export var dash_speed = 8
+@export var dash_timeout = 5
+@export var dash_timeout_timer = 0
+@export var speed_multi = 1
 
 @onready var _animated_sprite = $WalkingAnimatedSprite2D
 @onready var _melee = $Melee
@@ -18,26 +24,39 @@ extends CharacterBody2D # Might need to be changed
 
 var i_hate_godot = 0
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_animated_sprite.play("walk")
 	_melee.get_node("MeleeAnimatedSprite2D").stop()
 	_melee.get_node("MeleeAnimatedSprite2D").hide()
+	
+	melee_timeout_counter = melee_timeout
+	dash_timeout_timer = dash_timeout
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var velocity = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
 	melee_timeout_counter += delta
+	dash_timeout_timer += delta
 	
 	if not charging_ranged_attack:
 		melee_animations(velocity)
 		movement_animations(velocity)
 		movement(velocity, delta)
+		dash_movement(velocity)
 		charge_ranged()
 	else:
 		discharge_ranged(delta)
+
+func dash_movement(velocity: Vector2):
+	if dash_timeout_timer > dash_distance:
+		speed_multi = 1
+	
+	if Input.is_action_just_pressed("move_dash"):
+		if dash_timeout < dash_timeout_timer:
+			speed_multi = dash_speed
+			dash_timeout_timer = 0
 
 func charge_ranged():
 	if Input.is_action_just_pressed("attack_ranged") and melee_timeout_counter > melee_timeout:
@@ -102,4 +121,4 @@ func movement_animations(velocity: Vector2) -> void:
 			_animated_sprite.play("walk")
 
 func movement(velocity: Vector2, delta: float) -> void:
-	move_and_collide(velocity * speed * delta)
+	move_and_collide(velocity * speed * delta * speed_multi)
