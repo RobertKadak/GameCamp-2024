@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpn7jijdmky8e"]
+[gd_scene load_steps=7 format=3 uid="uid://cpn7jijdmky8e"]
 
 [ext_resource type="PackedScene" uid="uid://cjnjct76im3qy" path="res://characters/player/player.tscn" id="1_nkpfc"]
-[ext_resource type="PackedScene" uid="uid://bep843k7yixqs" path="res://scenes/enemy.tscn" id="2_7dsv0"]
+[ext_resource type="PackedScene" uid="uid://4tbot0pb2xdg" path="res://scenes/enemy.tscn" id="2_7dsv0"]
+[ext_resource type="PackedScene" uid="uid://dvi4gstt4trqt" path="res://scenes/levels/stop_watch.tscn" id="3_hvndn"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_d840p"]
 vertices = PackedVector2Array(928, 516.75, -934, 516.75, -934, -511.75, 928, -511.75)
@@ -51,3 +52,5 @@ shape = SubResource("RectangleShape2D_hh3uy")
 
 [node name="enemy" parent="." node_paths=PackedStringArray("target_to_chase") instance=ExtResource("2_7dsv0")]
 target_to_chase = NodePath("../Player")
+
+[node name="StopWatch" parent="." groups=["StopWatch"] instance=ExtResource("3_hvndn")]

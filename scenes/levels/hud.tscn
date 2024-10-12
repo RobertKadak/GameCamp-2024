@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqmf6iaw6o1er"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_tk4gs"]
+
+[node name="HUD" type="Node2D" node_paths=PackedStringArray("Stopwatch_label")]
+script = ExtResource("1_tk4gs")
+Stopwatch_label = NodePath("Display/Stopwatch_label")
+
+[node name="Display" type="CanvasLayer" parent="."]
+
+[node name="Health" type="Label" parent="Display"]
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 58.0
+offset_bottom = 24.0
+scale = Vector2(1.38282, 1.70745)
+text = "Health:"
+
+[node name="Charge" type="Label" parent="Display"]
+offset_left = 2.0
+offset_top = 35.0
+offset_right = 62.0
+offset_bottom = 58.0
+scale = Vector2(1.32, 1.4)
+text = "Charge:"
+
+[node name="Stopwatch_label" type="Label" parent="Display" groups=["StopWatch"]]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "00:00"
