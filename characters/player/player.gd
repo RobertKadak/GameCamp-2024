@@ -66,7 +66,6 @@ func melee_animations(velocity: Vector2) -> void:
 	
 	var melee_attack_vector = position_to_mouse.normalized() * melee_attack_range
 	_melee.global_position = global_position + melee_attack_vector
-	print(global_position + melee_attack_vector)
 	
 	if Input.is_action_just_pressed("attack_melee") and melee_timeout_counter > melee_timeout:
 		melee_timeout_counter = 0
