@@ -107,9 +107,8 @@ func melee_animations(velocity: Vector2) -> void:
 			_melee.get_node("MeleeAnimatedSprite2D").stop()
 			_melee.get_node("MeleeAnimatedSprite2D").hide()
 		
-		if i_hate_godot == 1 and _animated_sprite.frame == 0:
+		if i_hate_godot == 1 and _animated_sprite.frame == 0 and _animated_sprite.animation == "melee":
 			_animated_sprite.play("walk")
-		
 		
 		if _animated_sprite.animation == "melee":
 			i_hate_godot = _animated_sprite.frame
@@ -120,7 +119,8 @@ func movement_animations(velocity: Vector2) -> void:
 	
 	if _animated_sprite.animation != "melee":
 		if velocity.is_zero_approx():
-			_animated_sprite.stop()
+			if _animated_sprite.animation != "idle":
+				_animated_sprite.play("idle")
 		else:
 			_animated_sprite.play("walk")
 
