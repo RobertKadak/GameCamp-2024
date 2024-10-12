@@ -24,6 +24,10 @@ window/size/resizable=false
 window/size/borderless=true
 window/stretch/mode="viewport"
 
+[global_group]
+
+Enemy=""
+
 [input]
 
 move_up={

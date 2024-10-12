@@ -44,6 +44,7 @@ animations = [{
 size = Vector2(128, 128)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_cwafh")
 
 [node name="WalkingAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -54,7 +55,8 @@ frame_progress = 0.977247
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_f42hs")
 
-[node name="Melee" type="Node2D" parent="."]
+[node name="Melee" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="MeleeAnimatedSprite2D" type="AnimatedSprite2D" parent="Melee"]
 sprite_frames = SubResource("SpriteFrames_1hmyh")

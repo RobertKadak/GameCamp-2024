@@ -29,6 +29,10 @@ func melee_animations(velocity: Vector2) -> void:
 	_melee.position = melee_attack_position
 	
 	if Input.is_action_just_pressed("attack_melee"):
+		for body in _melee.get_overlapping_bodies():
+			if body.is_in_group("Enemy"):
+				body.receive_damage(1)
+		
 		_melee.get_node("MeleeAnimatedSprite2D").show()
 		_melee.get_node("MeleeAnimatedSprite2D").play("melee")
 	else:
