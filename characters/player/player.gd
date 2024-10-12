@@ -10,6 +10,8 @@ extends CharacterBody2D # Might need to be changed
 
 @onready var _animated_sprite = $WalkingAnimatedSprite2D
 @onready var _melee = $Melee
+@onready var ranged_projectile = preload("res://characters/player/ranged/projectile.tscn")
+@onready var world = get_parent()
 
 
 # Called when the node enters the scene tree for the first time.
@@ -41,7 +43,12 @@ func discharge_ranged(delta: float):
 	charging_ranged_timer += delta
 	if Input.is_action_just_released("attack_ranged"):
 		if charging_ranged_timer > charging_ranged_timer_required:
-			pass # Do the attack
+			var projectile = ranged_projectile.instantiate()
+			world.add_child(projectile)
+			
+			var position_to_mouse = get_global_mouse_position() - global_position
+			projectile.global_position = global_position
+			projectile.direction = position_to_mouse.normalized()
 		else:
 			pass # Attack failed
 		_animated_sprite.stop()

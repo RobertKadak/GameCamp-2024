@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://f3ikjwfuh1vw"]
+
+[ext_resource type="Script" path="res://characters/player/ranged/projectile.gd" id="1_3lpk2"]
+[ext_resource type="Texture2D" uid="uid://ielg4416rq4a" path="res://characters/player/ranged/ranged_projectile.png" id="1_x368l"]
+[ext_resource type="Texture2D" uid="uid://k7krrstb4k0k" path="res://characters/player/ranged/ranged_projectile_rotated.png" id="2_f3v58"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vodm2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_x368l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_f3v58")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8c07t"]
+radius = 57.85
+
+[node name="Projectile" type="Area2D"]
+collision_mask = 3
+script = ExtResource("1_3lpk2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vodm2")
+frame_progress = 0.631936
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8c07t")
