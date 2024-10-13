@@ -1,12 +1,13 @@
 extends CharacterBody2D
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var ranged_projectile = preload("res://characters/player/ranged/boss_particle_attack.png")
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
 func _ready():
-	animated_sprite_2d.play("attack")
+	animated_sprite_2d.play("ranged_projectile")
 
 
 func _physics_process(delta: float) -> void:
