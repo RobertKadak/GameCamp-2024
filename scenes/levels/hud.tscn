@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ek3gk38x6fy5"]
+[gd_scene load_steps=6 format=3 uid="uid://df3muplc0mal8"]
 
 [ext_resource type="Script" path="res://scripts/stopwatch_label.gd" id="2_l5hw3"]
+[ext_resource type="Script" path="res://scenes/levels/notifications.gd" id="3_gxsk7"]
 [ext_resource type="Script" path="res://scripts/health_value.gd" id="3_hn4f8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_or2ie"]
@@ -47,3 +48,19 @@ offset_bottom = 33.0
 scale = Vector2(2, 2)
 text = "100"
 script = ExtResource("3_hn4f8")
+
+[node name="Notifications" type="Label" parent="Display"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -258.0
+offset_top = -468.0
+offset_right = 258.0
+offset_bottom = -263.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+script = ExtResource("3_gxsk7")
