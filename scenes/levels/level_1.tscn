@@ -19,12 +19,10 @@ size = Vector2(21.1639, 2.325)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hh3uy"]
 
-[node name="level1" type="Node2D" node_paths=PackedStringArray("box_region_start", "box_region_end", "box_region_start2", "box_region_end2")]
+[node name="level1" type="Node2D" node_paths=PackedStringArray("box_region_start", "box_region_end")]
 script = ExtResource("1_1j3sy")
 box_region_start = NodePath("BoxStart")
 box_region_end = NodePath("BoxEnd")
-box_region_start2 = NodePath("BoxStart2")
-box_region_end2 = NodePath("BoxEnd2")
 
 [node name="StopWatch" parent="." groups=["StopWatch"] instance=ExtResource("3_hvndn")]
 
@@ -33,6 +31,7 @@ box_region_end2 = NodePath("BoxEnd2")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(-1, -1)
 scale = Vector2(1.00527, 0.993624)
 navigation_polygon = SubResource("NavigationPolygon_d840p")
@@ -87,13 +86,7 @@ position = Vector2(10, -401)
 position = Vector2(-670, -248)
 
 [node name="BoxEnd" type="Node2D" parent="."]
-position = Vector2(-111, 246)
-
-[node name="BoxStart2" type="Node2D" parent="."]
-position = Vector2(109, -248)
-
-[node name="BoxEnd2" type="Node2D" parent="."]
-position = Vector2(658, 246)
+position = Vector2(664, 304)
 
 [connection signal="body_entered" from="nextLevel" to="." method="_on_next_level_body_entered"]
 [connection signal="timeout" from="MobSpawn" to="." method="_on_mob_spawn_timeout"]
