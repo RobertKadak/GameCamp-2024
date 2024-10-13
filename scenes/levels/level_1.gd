@@ -1,7 +1,6 @@
 extends Node2D
 
-var elapsedTime : int
-var diffInd : int 
+@onready var enemy = preload("res://scenes/enemy.tscn")
 
 @export var box_region_start: Node2D
 @export var box_region_end: Node2D
@@ -20,9 +19,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+
 func is_level_clear():
 	var enemies = get_tree().get_nodes_in_group("Enemy")
 	return len(enemies) == 0
+
+func _on_mob_spawn_timeout() -> void:
+	var mob = enemy.instantiate()
+	add_child(mob)
+	mob.target_to_chase  = $Player
 
 func generate_objects(region_start_node: Node2D, region_end_node: Node2D,
 		object_resource: Resource, count=1):

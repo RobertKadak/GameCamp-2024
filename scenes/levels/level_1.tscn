@@ -74,6 +74,15 @@ texture = ExtResource("3_xcyde")
 [node name="nextLevel" parent="." instance=ExtResource("7_tcj8h")]
 position = Vector2(895, -33)
 
+[node name="MobSpawn" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[connection signal="timeout" from="MobSpawn" to="." method="_on_mob_spawn_timeout"]
+
+[node name="Object" parent="." instance=ExtResource("8_xilvg")]
+position = Vector2(10, -401)
+
 [node name="BoxStart" type="Node2D" parent="."]
 position = Vector2(-670, -248)
 
