@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bft0vos3jko1p"]
+
+[ext_resource type="Script" path="res://boss.gd" id="1_k0m05"]
+[ext_resource type="Texture2D" uid="uid://tujcb6dep1c1" path="res://assets/boss_idle1.png" id="2_c12dx"]
+[ext_resource type="Texture2D" uid="uid://clnmeipvce58q" path="res://assets/boss_idle2.png" id="3_3i4ai"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wectn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_c12dx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3i4ai")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="boss" type="CharacterBody2D"]
+script = ExtResource("1_k0m05")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1412, 518)
+scale = Vector2(-0.413391, 0.413391)
+sprite_frames = SubResource("SpriteFrames_wectn")
+animation = &"idle"
+frame_progress = 0.230549
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(1323, 62, 1402, 55, 1666, 100, 1774, 284, 1818, 325, 1850, 414, 1853, 563, 1866, 703, 1869, 766, 1862, 840, 1853, 871, 1802, 982, 1742, 1024, 1637, 881, 1459, 884, 1262, 865, 1123, 871, 1012, 836, 967, 735, 916, 655, 958, 528, 1056, 398, 989, 316, 993, 281, 1180, 259, 1240, 128)
