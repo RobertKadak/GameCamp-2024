@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://dpmeiygrb63pw"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_vd5t4"]
+[ext_resource type="Texture2D" uid="uid://tj045va61nn2" path="res://characters/boss/boss_idle1.png" id="2_mxy2b"]
+[ext_resource type="Texture2D" uid="uid://bej676glral4n" path="res://characters/boss/boss_idle2.png" id="3_253nl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n73ln"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mxy2b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_253nl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mxy2b")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mxy2b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_253nl")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pmtw4"]
+size = Vector2(20, 109.5)
+
+[node name="enemy" type="CharacterBody2D" groups=["Enemy"]]
+scale = Vector2(2.1, 2.1)
+collision_layer = 2
+script = ExtResource("1_vd5t4")
+health = 50
+damage = 10
+speed = 200.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-53, -55, 45, -55, 46, 58, -49, 57)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.00001, 1.09673e-05)
+scale = Vector2(0.046, 0.044)
+sprite_frames = SubResource("SpriteFrames_n73ln")
+animation = &"attack"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1.75)
+scale = Vector2(5.6, 1)
+shape = SubResource("RectangleShape2D_pmtw4")

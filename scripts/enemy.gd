@@ -12,7 +12,7 @@ extends CharacterBody2D
 @onready var since_last_flip = 0
 @onready var tmptime = 0
 
-const speed = 180.0
+@export var speed = 180.0
 
 func _ready() -> void:
 	$AnimatedSprite2D.play("walk")
@@ -45,10 +45,10 @@ func _process(delta: float) -> void:
 	
 func attack():
 	$AnimatedSprite2D.play("attack")
-	player.health -= 1
+	player.health -= damage
 
 func receive_damage(hp: int):
-	health -= damage
+	health -= hp
 	
 	if health <= 0:
 		queue_free()

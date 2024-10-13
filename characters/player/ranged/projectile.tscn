@@ -24,6 +24,7 @@ radius = 57.85
 [node name="Projectile" type="Area2D"]
 collision_mask = 3
 script = ExtResource("1_3lpk2")
+damage = 0.2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 0)
