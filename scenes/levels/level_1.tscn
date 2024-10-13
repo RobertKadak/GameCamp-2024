@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" path="res://scenes/levels/stop_watch.tscn" id="3_hvndn"]
 [ext_resource type="Texture2D" uid="uid://c00224xebfjt7" path="res://assets/fuckass_room.png" id="3_xcyde"]
 [ext_resource type="PackedScene" uid="uid://dcybrwwl41s8p" path="res://scenes/next_level.tscn" id="7_tcj8h"]
-[ext_resource type="PackedScene" path="res://scenes/object.tscn" id="8_xilvg"]
+[ext_resource type="PackedScene" uid="uid://d1a3v0dotogeo" path="res://scenes/object.tscn" id="8_xilvg"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_d840p"]
 vertices = PackedVector2Array(928, 516.75, -934, 516.75, -934, -511.75, 928, -511.75)
@@ -80,8 +80,6 @@ position = Vector2(895, -33)
 wait_time = 4.0
 autostart = true
 
-[connection signal="timeout" from="MobSpawn" to="." method="_on_mob_spawn_timeout"]
-
 [node name="Object" parent="." instance=ExtResource("8_xilvg")]
 position = Vector2(10, -401)
 
@@ -96,3 +94,5 @@ position = Vector2(109, -248)
 
 [node name="BoxEnd2" type="Node2D" parent="."]
 position = Vector2(658, 246)
+
+[connection signal="timeout" from="MobSpawn" to="." method="_on_mob_spawn_timeout"]
