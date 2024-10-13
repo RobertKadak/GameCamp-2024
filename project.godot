@@ -30,6 +30,7 @@ Enemy=""
 StopWatch=""
 Player=""
 Objects=""
+NotificationManager=""
 
 [input]
 

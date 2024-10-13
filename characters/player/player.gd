@@ -26,11 +26,30 @@ extends CharacterBody2D # Might need to be changed
 @onready var ranged_projectile = preload("res://characters/player/ranged/projectile.tscn")
 @onready var world = get_parent()
 
+@onready var degen = ""
+@onready var degen_change_interval = 10
+@onready var degen_change_timer = 0
+@onready var notification_manager = get_tree().get_first_node_in_group("NotificationManager")
+@onready var noti1 = false
+@onready var noti2 = false
+
+func apply_degen():
+	if degen_change_timer > degen_change_interval * 2:
+		degen = "2"
+		if not noti2:
+			notification_manager.add_message("You have deteriorated into a stage two cat-girl mutant", 4)
+			noti2 = true
+	elif degen_change_timer > degen_change_interval:
+		degen = "1"
+		if not noti1:
+			notification_manager.add_message("You have deteriorated into a stage one cat-girl mutant", 4)
+			noti1 = true
+
 var i_hate_godot = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_animated_sprite.play("walk")
+	_animated_sprite.play("walk" + degen)
 	_melee.get_node("MeleeAnimatedSprite2D").stop()
 	_melee.get_node("MeleeAnimatedSprite2D").hide()
 	
@@ -57,6 +76,7 @@ func _process(delta: float) -> void:
 	
 	melee_timeout_counter += delta
 	dash_timeout_timer += delta
+	degen_change_timer += delta
 	
 	if not charging_ranged_attack:
 		melee_animations(velocity)
@@ -68,7 +88,9 @@ func _process(delta: float) -> void:
 		discharge_ranged(delta)
 	
 	if charging_ranged_timer > charging_ranged_timer_required and Input.is_action_pressed("attack_ranged"):
-		_animated_sprite.play("ranged_ready")
+		_animated_sprite.play("ranged_ready" + degen)
+	
+	apply_degen()
 
 func dash_movement(velocity: Vector2):
 	if dash_timeout_timer > dash_distance:
@@ -86,7 +108,7 @@ func charge_ranged():
 	if Input.is_action_just_pressed("attack_ranged") and melee_timeout_counter > melee_timeout:
 		charging_ranged_attack = true
 		charging_ranged_timer = 0
-		_animated_sprite.play("ranged")
+		_animated_sprite.play("ranged" + degen)
 
 func discharge_ranged(delta: float):
 	charging_ranged_timer += delta
@@ -102,7 +124,7 @@ func discharge_ranged(delta: float):
 			pass # Attack failed
 		_animated_sprite.stop()
 		charging_ranged_attack = false
-		_animated_sprite.play("walk")
+		_animated_sprite.play("walk" + degen)
 		charging_ranged_timer = 0
 
 func melee_animations(velocity: Vector2) -> void:
@@ -119,16 +141,16 @@ func melee_animations(velocity: Vector2) -> void:
 				body.receive_damage(1)
 		
 		i_hate_godot = 0
-		_animated_sprite.play("melee")
+		_animated_sprite.play("melee" + degen)
 		_melee.get_node("MeleeAnimatedSprite2D").show()
-		_melee.get_node("MeleeAnimatedSprite2D").play("melee")
+		_melee.get_node("MeleeAnimatedSprite2D").play("melee" + degen)
 	else:
 		if _melee.get_node("MeleeAnimatedSprite2D").frame == 2:
 			_melee.get_node("MeleeAnimatedSprite2D").stop()
 			_melee.get_node("MeleeAnimatedSprite2D").hide()
 		
 		if i_hate_godot == 1 and _animated_sprite.frame == 0 and _animated_sprite.animation == "melee":
-			_animated_sprite.play("walk")
+			_animated_sprite.play("walk" + degen)
 		
 		if _animated_sprite.animation == "melee":
 			i_hate_godot = _animated_sprite.frame
@@ -140,9 +162,9 @@ func movement_animations(velocity: Vector2) -> void:
 	if _animated_sprite.animation != "melee":
 		if velocity.is_zero_approx():
 			if _animated_sprite.animation != "idle":
-				_animated_sprite.play("idle")
+				_animated_sprite.play("idle" + degen)
 		else:
-			_animated_sprite.play("walk")
+			_animated_sprite.play("walk" + degen)
 
 func movement(velocity: Vector2, delta: float) -> void:
 	move_and_collide(velocity * speed * delta * speed_multi)
