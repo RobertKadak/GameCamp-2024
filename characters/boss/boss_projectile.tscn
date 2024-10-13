@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://n66cyln0ehqo"]
+
+[ext_resource type="Script" path="res://characters/boss/boss_projectile.gd" id="1_udepa"]
+[ext_resource type="Texture2D" uid="uid://cw4emp27vlvtt" path="res://characters/boss/boss_particle_attack.png" id="2_b57fw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vcq1d"]
+
+[node name="BossProjectile" type="Area2D"]
+script = ExtResource("1_udepa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.100257, 0.1)
+texture = ExtResource("2_b57fw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.16318, 4.34504)
+shape = SubResource("CircleShape2D_vcq1d")
