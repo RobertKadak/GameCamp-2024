@@ -1,18 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://df3muplc0mal8"]
+[gd_scene load_steps=9 format=3 uid="uid://df3muplc0mal8"]
 
 [ext_resource type="Script" path="res://scripts/stopwatch_label.gd" id="2_l5hw3"]
 [ext_resource type="Script" path="res://scenes/levels/notifications.gd" id="3_gxsk7"]
 [ext_resource type="Script" path="res://scripts/health_value.gd" id="3_hn4f8"]
 
+[sub_resource type="SystemFont" id="SystemFont_02jre"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_or2ie"]
-font_size = 24
-font_color = Color(1, 0, 1, 1)
+font = SubResource("SystemFont_02jre")
+font_size = 27
+font_color = Color(1, 0, 0, 1)
 outline_color = Color(0.996078, 0, 1, 1)
 shadow_color = Color(1, 0, 0.972549, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_g1pgc"]
-font_size = 24
-font_color = Color(1, 0, 1, 1)
+font_size = 27
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_q0jpa"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hspki"]
+font = SubResource("SystemFont_q0jpa")
+font_size = 27
+font_color = Color(1, 0, 0, 1)
 
 [node name="HUD" type="Node2D"]
 
@@ -20,9 +30,9 @@ font_color = Color(1, 0, 1, 1)
 
 [node name="Health" type="Label" parent="Display"]
 offset_left = 6.0
-offset_top = 1.0
-offset_right = 90.0
-offset_bottom = 35.0
+offset_top = 2.0
+offset_right = 94.0
+offset_bottom = 37.0
 scale = Vector2(1.38282, 1.70745)
 text = "Health:"
 label_settings = SubResource("LabelSettings_or2ie")
@@ -41,12 +51,15 @@ label_settings = SubResource("LabelSettings_g1pgc")
 script = ExtResource("2_l5hw3")
 
 [node name="Health Value" type="Label" parent="Display"]
-offset_left = 129.0
-offset_top = 10.0
-offset_right = 169.0
-offset_bottom = 33.0
+offset_left = 138.0
+offset_top = -3.0
+offset_right = 184.0
+offset_bottom = 34.0
 scale = Vector2(2, 2)
+theme_override_colors/font_color = Color(0.996078, 0, 0, 1)
 text = "100"
+label_settings = SubResource("LabelSettings_hspki")
+tab_stops = PackedFloat32Array(0)
 script = ExtResource("3_hn4f8")
 
 [node name="Notifications" type="Label" parent="Display" groups=["NotificationManager"]]
