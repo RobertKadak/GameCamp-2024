@@ -8,13 +8,13 @@ size = Vector2(212, 188)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7cran"]
 size = Vector2(19.2552, 76.8288)
 
-[node name="Object" type="Node2D"]
-scale = Vector2(0.76, 0.76)
+[node name="Object" type="Node2D" groups=["Objects"]]
+scale = Vector2(0.5, 0.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-7.89474, 5.26316)
+position = Vector2(-4.65683, -4.65874)
 rotation = 0.000206127
-scale = Vector2(0.802602, 0.802602)
+scale = Vector2(0.66751, 0.66751)
 texture = ExtResource("1_ayast")
 
 [node name="Area2D" type="Area2D" parent="."]
