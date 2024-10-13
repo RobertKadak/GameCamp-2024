@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://cpn7jijdmky8e"]
 
 [ext_resource type="Script" path="res://scenes/levels/level_1.gd" id="1_1j3sy"]
-[ext_resource type="PackedScene" uid="uid://df3muplc0mal8" path="res://scenes/levels/hud.tscn" id="1_lglxl"]
+[ext_resource type="PackedScene" uid="uid://ek3gk38x6fy5" path="res://scenes/levels/hud.tscn" id="1_lglxl"]
 [ext_resource type="PackedScene" uid="uid://cjnjct76im3qy" path="res://characters/player/player.tscn" id="1_nkpfc"]
 [ext_resource type="PackedScene" uid="uid://4tbot0pb2xdg" path="res://scenes/enemy.tscn" id="2_7dsv0"]
 [ext_resource type="PackedScene" path="res://scenes/levels/stop_watch.tscn" id="3_hvndn"]
@@ -64,20 +64,6 @@ shape = SubResource("RectangleShape2D_hh3uy")
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("1_nkpfc")]
 position = Vector2(845, 273)
-speed = 400
-health = 100
-melee_attack_range = 200
-charging_ranged_attack = false
-charging_ranged_timer = 0
-is_vertical_switched = false
-is_horizontal_switched = false
-melee_timeout = 0.7
-melee_timeout_counter = 0
-dash_distance = 0.08
-dash_speed = 8
-dash_timeout = 5
-dash_timeout_timer = 0
-speed_multi = 1
 
 [node name="enemy" parent="." node_paths=PackedStringArray("target_to_chase") instance=ExtResource("2_7dsv0")]
 target_to_chase = NodePath("../Player")

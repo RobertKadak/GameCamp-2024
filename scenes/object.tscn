@@ -9,6 +9,7 @@ size = Vector2(212, 188)
 size = Vector2(19.2552, 76.8288)
 
 [node name="Object" type="Node2D"]
+scale = Vector2(0.76, 0.76)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_govr5")
