@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bf4omdyo45gjm"]
+
+[ext_resource type="Texture2D" uid="uid://tj045va61nn2" path="res://characters/boss/boss_idle1.png" id="1_e3ayb"]
+[ext_resource type="Script" path="res://characters/boss/boss.gd" id="1_iaaie"]
+[ext_resource type="Texture2D" uid="uid://bej676glral4n" path="res://characters/boss/boss_idle2.png" id="2_dsnpe"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x30e7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_e3ayb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_dsnpe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Boss" type="CharacterBody2D" groups=["Boss"]]
+script = ExtResource("1_iaaie")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_x30e7")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-409, -1026)
+polygon = PackedVector2Array(-207, 30, -264, 243, -296, 300, -261, 336, -228, 439, -204, 514, -189, 564, -225, 600, -307, 528, -396, 475, -424, 429, -478, 443, -485, 486, -538, 518, -581, 564, -613, 582, -606, 618, -574, 685, -514, 778, -449, 835, -407, 903, -407, 970, -474, 981, -528, 920, -514, 867, -592, 853, -624, 917, -574, 952, -506, 1002, -549, 1052, -617, 1049, -674, 1152, -653, 1202, -610, 1259, -610, 1320, -653, 1366, -638, 1409, -681, 1434, -717, 1519, -724, 1605, -713, 1655, -674, 1676, -645, 1651, -592, 1683, -588, 1726, -645, 1772, -695, 1811, -692, 1861, -653, 1922, -563, 1972, -531, 2039, -549, 2107, -531, 2161, -485, 2182, -421, 2203, -367, 2246, -339, 2228, -375, 2139, -307, 2153, -271, 2150, -236, 2089, -261, 1986, -218, 1915, -325, 1829, -474, 1922, -542, 1872, -496, 1793, -353, 1719, -261, 1676, -211, 1758, -186, 1865, -129, 1904, -40, 1847, 60, 1883, 299, 1918, 442, 1840, 552, 1865, 638, 1772, 744, 1879, 891, 1719, 1083, 1744, 1087, 1840, 1129, 1872, 1204, 1733, 1283, 1740, 1318, 1801, 1407, 1779, 1389, 1647, 1503, 1533, 1528, 1419, 1589, 1362, 1568, 1273, 1503, 1213, 1446, 1181, 1503, 1049, 1439, 977, 1318, 952, 1315, 778, 1193, 675, 1094, 653, 1183, 532, 1208, 589, 1208, 632, 1261, 628, 1275, 564, 1307, 614, 1375, 625, 1318, 550, 1407, 564, 1450, 525, 1340, 511, 1414, 468, 1411, 443, 1190, 443, 1026, 646, 944, 614, 994, 503, 955, 407, 908, 489, 894, 603, 794, 550, 844, 461, 862, 354, 883, 236, 776, 79, 623, -60, 531, 51, 459, 72, 470, -88, 367, -85, 374, -24, 388, 54, 288, 51, 199, 26, 178, -45, 103, -3, 50, 58, 10, -13, -86, 5, -129, 51)
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
