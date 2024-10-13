@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://gbkydrvgq6oc"]
+
+[ext_resource type="Texture2D" uid="uid://bqf7y35tdw351" path="res://assets/losescreen.png" id="1_x4ta7"]
+
+[node name="lose screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Losescreen" type="Sprite2D" parent="."]
+position = Vector2(963, 542)
+texture = ExtResource("1_x4ta7")
