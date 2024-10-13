@@ -1,3 +1,20 @@
-[gd_scene format=3 uid="uid://bdv5h10us6nnx"]
+[gd_scene load_steps=2 format=3 uid="uid://bdv5h10us6nnx"]
+
+[ext_resource type="PackedScene" uid="uid://bf4omdyo45gjm" path="res://characters/boss/boss.tscn" id="1_h7nxr"]
 
 [node name="BossTestingLevel" type="Node2D"]
+
+[node name="Boss" parent="." node_paths=PackedStringArray("target", "target2", "source") instance=ExtResource("1_h7nxr")]
+position = Vector2(1410, 533)
+scale = Vector2(0.42, 0.42)
+target = NodePath("../Target")
+target2 = NodePath("../Target2")
+source = NodePath("../Target3")
+
+[node name="Target" type="Node2D" parent="."]
+
+[node name="Target2" type="Node2D" parent="."]
+position = Vector2(0, 1086)
+
+[node name="Target3" type="Node2D" parent="."]
+position = Vector2(1773, 322)

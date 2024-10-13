@@ -146,6 +146,8 @@ func melee_animations(velocity: Vector2) -> void:
 		melee_timeout_counter = 0
 		
 		for body in _melee.get_overlapping_bodies():
+			if body.is_in_group("Boss"):
+				body.receive_damage(1)
 			if body.is_in_group("Enemy"):
 				body.receive_damage(1)
 		
