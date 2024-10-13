@@ -18,7 +18,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.a
 func _process(delta: float) -> void:
-	print(levelTrack)
 	pass
 
 func is_coliding(area: Area2D):
@@ -31,10 +30,17 @@ func is_coliding(area: Area2D):
 func is_level_clear():
 	var enemies = get_tree().get_nodes_in_group("Enemy")
 	return len(enemies) == 0
+	
 func _on_mob_spawn_timeout() -> void:
 	var mob = enemy.instantiate()
 	add_child(mob)
 	mob.target_to_chase  = $Player
+
+func generate_mobs():
+	var count = levelTrack*2+(int)(diff/100)
+	while(count>0):
+		pass
+	
 
 func generate_objects():
 		var region_start_node = box_region_start
@@ -62,6 +68,14 @@ func clear():
 
 func nextLevel():
 	levelTrack += 1
+	updateDiff(50, 1)
+
+func updateDiff(value:int, add:bool):
+	diff += value
 
 func outOfControl():
 	pass
+
+
+func _on_diff_timeout() -> void:
+	updateDiff(1, 1)
