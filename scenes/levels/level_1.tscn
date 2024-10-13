@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://cpn7jijdmky8e"]
+[gd_scene load_steps=12 format=3 uid="uid://cpn7jijdmky8e"]
 
 [ext_resource type="Script" path="res://scenes/levels/level_1.gd" id="1_1j3sy"]
-[ext_resource type="PackedScene" uid="uid://ek3gk38x6fy5" path="res://scenes/levels/hud.tscn" id="1_lglxl"]
+[ext_resource type="PackedScene" uid="uid://df3muplc0mal8" path="res://scenes/levels/hud.tscn" id="1_lglxl"]
 [ext_resource type="PackedScene" uid="uid://cjnjct76im3qy" path="res://characters/player/player.tscn" id="1_nkpfc"]
 [ext_resource type="PackedScene" uid="uid://4tbot0pb2xdg" path="res://scenes/enemy.tscn" id="2_7dsv0"]
 [ext_resource type="PackedScene" path="res://scenes/levels/stop_watch.tscn" id="3_hvndn"]
 [ext_resource type="Texture2D" uid="uid://c00224xebfjt7" path="res://assets/fuckass_room.png" id="3_xcyde"]
 [ext_resource type="PackedScene" uid="uid://dcybrwwl41s8p" path="res://scenes/next_level.tscn" id="7_tcj8h"]
+[ext_resource type="PackedScene" uid="uid://bf4omdyo45gjm" path="res://characters/boss/boss.tscn" id="8_bvepc"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_d840p"]
 vertices = PackedVector2Array(928, 516.75, -934, 516.75, -934, -511.75, 928, -511.75)
@@ -86,6 +87,23 @@ position = Vector2(688, 352)
 
 [node name="Diff" type="Timer" parent="."]
 autostart = true
+
+[node name="Boss" parent="." node_paths=PackedStringArray("target", "target2", "source") instance=ExtResource("8_bvepc")]
+position = Vector2(428, 14)
+scale = Vector2(0.36, 0.36)
+target = NodePath("../Node2D3")
+target2 = NodePath("../Node2D2")
+source = NodePath("../Node2D")
+health = 200
+
+[node name="Node2D3" type="Node2D" parent="."]
+position = Vector2(-950, -530)
+
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2(-944, 528)
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(745, -168)
 
 [connection signal="body_entered" from="nextLevel" to="." method="_on_next_level_body_entered"]
 [connection signal="timeout" from="MobSpawn" to="." method="_on_mob_spawn_timeout"]
