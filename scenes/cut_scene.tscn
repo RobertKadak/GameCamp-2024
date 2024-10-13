@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dy56e2tyl3tuy"]
+[gd_scene load_steps=4 format=3 uid="uid://1yij7f3brcn4"]
 
 [ext_resource type="Texture2D" uid="uid://dpwb0iy50bdoh" path="res://assets/comic.png" id="1_ivakr"]
 [ext_resource type="Script" path="res://scripts/cut_scene.gd" id="1_lltxp"]

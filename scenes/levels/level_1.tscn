@@ -79,10 +79,10 @@ wait_time = 4.0
 autostart = true
 
 [node name="BoxStart" type="Node2D" parent="."]
-position = Vector2(-670, -248)
+position = Vector2(-672, -280)
 
 [node name="BoxEnd" type="Node2D" parent="."]
-position = Vector2(664, 304)
+position = Vector2(688, 352)
 
 [node name="Diff" type="Timer" parent="."]
 autostart = true
