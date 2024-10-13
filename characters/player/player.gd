@@ -14,6 +14,9 @@ extends CharacterBody2D # Might need to be changed
 @export var melee_timeout = .7
 @export var melee_timeout_counter = 0
 
+@export var ranged_timeout = 3
+@export var ranged_timeout_counter = 0
+
 @export var dash_distance = .08
 @export var dash_speed = 8
 @export var dash_timeout = 5
@@ -27,7 +30,7 @@ extends CharacterBody2D # Might need to be changed
 @onready var world = get_parent()
 
 @onready var degen = ""
-@onready var degen_change_interval = 10
+@onready var degen_change_interval = 60
 @onready var degen_change_timer = 0
 @onready var notification_manager = get_tree().get_first_node_in_group("NotificationManager")
 @onready var noti1 = false
@@ -55,6 +58,7 @@ func _ready() -> void:
 	
 	melee_timeout_counter = melee_timeout
 	dash_timeout_timer = dash_timeout
+	ranged_timeout_counter = ranged_timeout
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -77,6 +81,7 @@ func _process(delta: float) -> void:
 	melee_timeout_counter += delta
 	dash_timeout_timer += delta
 	degen_change_timer += delta
+	ranged_timeout_counter += delta
 	
 	if not charging_ranged_attack:
 		melee_animations(velocity)
@@ -105,10 +110,11 @@ func dash_movement(velocity: Vector2):
 			dash_timeout_timer = 0
 
 func charge_ranged():
-	if Input.is_action_just_pressed("attack_ranged") and melee_timeout_counter > melee_timeout:
+	if Input.is_action_just_pressed("attack_ranged") and melee_timeout_counter > melee_timeout and ranged_timeout_counter > ranged_timeout:
 		charging_ranged_attack = true
 		charging_ranged_timer = 0
 		_animated_sprite.play("ranged" + degen)
+		_melee.get_node("MeleeAnimatedSprite2D").hide()
 
 func discharge_ranged(delta: float):
 	charging_ranged_timer += delta
@@ -120,8 +126,11 @@ func discharge_ranged(delta: float):
 			var position_to_mouse = get_global_mouse_position() - global_position
 			projectile.global_position = global_position
 			projectile.direction = position_to_mouse.normalized()
+				
+			ranged_timeout_counter = 0
+			melee_timeout_counter = 0
 		else:
-			pass # Attack failed
+			pass
 		_animated_sprite.stop()
 		charging_ranged_attack = false
 		_animated_sprite.play("walk" + degen)
@@ -143,12 +152,11 @@ func melee_animations(velocity: Vector2) -> void:
 		i_hate_godot = 0
 		_animated_sprite.play("melee" + degen)
 		_melee.get_node("MeleeAnimatedSprite2D").show()
+		_melee.get_node("MeleeAnimatedSprite2D").frame = 0
 		_melee.get_node("MeleeAnimatedSprite2D").play("melee" + degen)
-	else:
-		if _melee.get_node("MeleeAnimatedSprite2D").frame == 2:
-			_melee.get_node("MeleeAnimatedSprite2D").stop()
-			_melee.get_node("MeleeAnimatedSprite2D").hide()
 		
+		$Timer.start()
+	else:
 		if i_hate_godot == 1 and _animated_sprite.frame == 0 and _animated_sprite.animation == "melee":
 			_animated_sprite.play("walk" + degen)
 		
@@ -168,3 +176,10 @@ func movement_animations(velocity: Vector2) -> void:
 
 func movement(velocity: Vector2, delta: float) -> void:
 	move_and_collide(velocity * speed * delta * speed_multi)
+
+
+func _on_timer_timeout() -> void:
+	_melee.get_node("MeleeAnimatedSprite2D").stop()
+	_melee.get_node("MeleeAnimatedSprite2D").hide()
+	_melee.get_node("MeleeAnimatedSprite2D").frame = 0
+	$Timer.stop()
