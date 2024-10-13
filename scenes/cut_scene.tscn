@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy56e2tyl3tuy"]
+
+[ext_resource type="Texture2D" uid="uid://dpwb0iy50bdoh" path="res://assets/comic.png" id="1_ivakr"]
+[ext_resource type="Script" path="res://scripts/cut_scene.gd" id="1_lltxp"]
+[ext_resource type="Texture2D" uid="uid://xyrvkcysxotd" path="res://assets/play.png" id="2_ybf6v"]
+
+[node name="cutScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lltxp")
+
+[node name="Comic" type="Sprite2D" parent="."]
+position = Vector2(962, 534)
+texture = ExtResource("1_ivakr")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1335.0
+offset_top = 891.0
+offset_right = 1909.0
+offset_bottom = 1067.0
+theme_override_colors/icon_hover_color = Color(0.321569, 0.52549, 1, 0.717647)
+theme_override_colors/icon_hover_pressed_color = Color(0.321569, 0.52549, 1, 0.717647)
+icon = ExtResource("2_ybf6v")
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
