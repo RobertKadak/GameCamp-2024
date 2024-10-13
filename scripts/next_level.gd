@@ -9,4 +9,6 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		level.get_node("Player").global_position = Vector2.ZERO
+		level.clear()
+		level.generate_object()
 		pass # level funtion to clear, regenerate level and teleport player

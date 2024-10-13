@@ -17,7 +17,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
 func is_level_clear():
 	var enemies = get_tree().get_nodes_in_group("Enemy")
 	return len(enemies) == 0
@@ -39,3 +38,11 @@ func generate_objects(region_start_node: Node2D, region_end_node: Node2D,
 		
 		# Might add some constriction checks
 		count -= 1
+
+func clear():
+	var clearables = get_tree().get_nodes_in_group("Objects")
+	for i in clearables:
+		i.queue_free()
+
+func regen():
+	pass

@@ -29,6 +29,7 @@ window/stretch/mode="viewport"
 Enemy=""
 StopWatch=""
 Player=""
+Objects=""
 
 [input]
 
