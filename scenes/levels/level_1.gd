@@ -6,13 +6,19 @@ extends Node2D
 @export var box_region_end: Node2D
 @onready var box1 = preload("res://scenes/object.tscn")
 
+@onready var diff : int 
+@onready var levelTrack
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	levelTrack = 1
+	diff = 0
 	generate_objects()
 	$NavigationRegion2D.bake_navigation_polygon()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.a
 func _process(delta: float) -> void:
+	print(levelTrack)
 	pass
 
 func is_coliding(area: Area2D):
@@ -53,3 +59,9 @@ func clear():
 	var clearables = get_tree().get_nodes_in_group("Objects")
 	for i in clearables:
 		i.queue_free()
+
+func nextLevel():
+	levelTrack += 1
+
+func outOfControl():
+	pass

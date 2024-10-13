@@ -11,4 +11,5 @@ func _on_body_entered(body: Node2D) -> void:
 		level.get_node("Player").global_position = Vector2.ZERO
 		level.clear()
 		level.generate_objects()
+		level.nextLevel()
 		pass # level funtion to clear, regenerate level and teleport player
