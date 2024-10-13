@@ -63,7 +63,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if health <= 0:
-		get_tree().change_scene_to_file("res://assets/losescreen.png")
+		get_tree().change_scene_to_file("res://scenes/lose_screen.tscn")
 		
 	var move_left = "move_left"
 	var move_right = "move_right"

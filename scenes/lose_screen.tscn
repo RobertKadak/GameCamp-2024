@@ -11,5 +11,5 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Losescreen" type="Sprite2D" parent="."]
-position = Vector2(952, 544)
+position = Vector2(963, 542)
 texture = ExtResource("1_x4ta7")
