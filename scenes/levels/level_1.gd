@@ -21,6 +21,7 @@ func is_coliding(area: Area2D):
 		if(area.overlaps_area(i)):
 			return true
 		return false
+
 func is_level_clear():
 	var enemies = get_tree().get_nodes_in_group("Enemy")
 	return len(enemies) == 0
@@ -33,7 +34,7 @@ func generate_objects():
 		var region_start_node = box_region_start
 		var region_end_node = box_region_end
 		var object_resource = box1
-		var count = randi()%3 + 2
+		var count = randi()%2 + 2
 		while count > 0:
 			var x = randi_range(region_start_node.position.x, region_end_node.position.x)
 			var y = randi_range(region_start_node.position.y, region_end_node.position.y)
