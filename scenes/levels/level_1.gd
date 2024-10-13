@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var enemy = preload("res://scenes/enemy.tscn")
+@onready var miniboss = preload("res://scenes/boss_enemy.tscn")
 
 @export var box_region_start: Node2D
 @export var box_region_end: Node2D
@@ -53,7 +54,11 @@ func generate_mobs():
 	while(count>0):
 		var x = randi_range(region_start_node.position.x, region_end_node.position.x)
 		var y = randi_range(region_start_node.position.y, region_end_node.position.y)
-		var mob = enemy.instantiate()
+		var mob
+		if(randi()%3 == 0):
+			mob = miniboss.instantiate()
+		else:
+			mob = enemy.instantiate()
 		mob.position = Vector2(x, y)
 		mob.target_to_chase = $Player
 		if(!is_colidingPLAYER(mob.get_node("Area2D"))):
