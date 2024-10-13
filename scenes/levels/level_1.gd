@@ -12,8 +12,6 @@ extends Node2D
 func _ready() -> void:
 	generate_objects(box_region_start, box_region_end, box1)
 	generate_objects(box_region_start2, box_region_end2, box1)
-	
-	$NavigationRegion2D.bake_navigation_polygon()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -37,7 +35,7 @@ func generate_objects(region_start_node: Node2D, region_end_node: Node2D,
 		
 		var object = object_resource.instantiate()
 		object.position = Vector2(x, y)
-		$NavigationRegion2D.add_child(object)
+		add_child(object)
 		
 		# Might add some constriction checks
 		count -= 1
