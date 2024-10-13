@@ -29,7 +29,7 @@ func is_coliding(area: Area2D):
 
 func is_level_clear():
 	var enemies = get_tree().get_nodes_in_group("Enemy")
-	return len(enemies) == 0
+	return enemies.is_empty()
 	
 func _on_mob_spawn_timeout() -> void:
 	var mob = enemy.instantiate()
