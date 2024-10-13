@@ -5,15 +5,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nje4h"]
 size = Vector2(212, 188)
 
-<<<<<<< HEAD
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7cran"]
 size = Vector2(19.2552, 76.8288)
 
 [node name="Object" type="Node2D"]
-=======
-[node name="Object" type="Node2D" groups=["Objects"]]
-scale = Vector2(0.8, 0.8)
->>>>>>> roomClear
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_govr5")
