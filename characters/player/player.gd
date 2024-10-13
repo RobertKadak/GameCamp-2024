@@ -41,6 +41,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if health <= 0:
 		pass # End game
+		
 	var move_left = "move_left"
 	var move_right = "move_right"
 	var move_up = "move_up"
@@ -51,6 +52,7 @@ func _process(delta: float) -> void:
 	if is_vertical_switched:
 		move_up = "move_down"
 		move_down = "move_up"
+		
 	var velocity = Input.get_vector(move_left, move_right, move_up, move_down)
 	
 	melee_timeout_counter += delta
