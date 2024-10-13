@@ -60,6 +60,8 @@ offset_top = 74.0
 offset_right = 1013.0
 offset_bottom = 250.0
 scale = Vector2(0.88, 0.84)
+theme_override_colors/icon_hover_color = Color(0.321569, 0.52549, 1, 0.717647)
+theme_override_colors/icon_hover_pressed_color = Color(0.321569, 0.52549, 1, 0.717647)
 text = "Quit"
 icon = ExtResource("3_gkb2c")
 flat = true
@@ -71,7 +73,7 @@ offset_top = -89.0
 offset_right = 1023.0
 offset_bottom = 87.0
 scale = Vector2(0.8, 0.92)
-text = "Play"
+theme_override_colors/icon_hover_color = Color(0.321569, 0.52549, 1, 0.717647)
 icon = ExtResource("4_xx5rt")
 flat = true
 
