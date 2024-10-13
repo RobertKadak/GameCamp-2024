@@ -31,6 +31,7 @@ box_region_end = NodePath("BoxEnd")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(-1, -1)
 scale = Vector2(1.00527, 0.993624)
 navigation_polygon = SubResource("NavigationPolygon_d840p")
