@@ -1,7 +1,8 @@
 extends Area2D
 
-@onready var level = get_parent()
 
+@onready var level = get_parent()
+@onready var boss = preload("res://characters/boss.tscn")
 
 func _process(delta: float) -> void:
 	monitoring = true
@@ -9,8 +10,6 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		if(level.levelTrack == 3):
-			pass
 		if(level.is_level_clear()):
 			level.get_node("Player").global_position = Vector2.ZERO
 			level.clear()

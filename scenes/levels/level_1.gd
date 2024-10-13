@@ -39,14 +39,15 @@ func is_colidingPLAYER(area: Area2D):
 func is_level_clear():
 	var enemies = get_tree().get_nodes_in_group("Enemy")
 	return enemies.is_empty()
-	
+
+
 #func _on_mob_spawn_timeout() -> void:
 #	var mob = enemy.instantiate()
 #	add_child(mob)
 #	mob.target_to_chase  = $Player
 
 func generate_mobs():
-	var count = levelTrack*2+(int)(diff/100)
+	var count = levelTrack*3+(int)(diff/100)
 	var region_start_node = box_region_start
 	var region_end_node = box_region_end
 	while(count>0):
@@ -66,7 +67,7 @@ func generate_objects():
 		var region_start_node = box_region_start
 		var region_end_node = box_region_end
 		var object_resource = box1
-		var count = randi()%2 + 2
+		var count = randi()%4 + 2
 		while count > 0:
 			var x = randi_range(region_start_node.position.x, region_end_node.position.x)
 			var y = randi_range(region_start_node.position.y, region_end_node.position.y)

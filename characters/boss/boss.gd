@@ -10,6 +10,7 @@ extends CharacterBody2D
 func _ready() -> void:
 	$Timer.start()
 	$AnimatedSprite2D.play()
+	position = Vector2(428, 14)
 
 func _process(delta: float) -> void:
 	pass
