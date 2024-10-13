@@ -8,6 +8,9 @@ extends CharacterBody2D # Might need to be changed
 @export var charging_ranged_timer = 0
 @export var charging_ranged_timer_required = 5
 
+@export var is_vertical_switched = false
+@export var is_horizontal_switched = false
+
 @export var melee_timeout = .7
 @export var melee_timeout_counter = 0
 
@@ -38,8 +41,17 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if health <= 0:
 		pass # End game
-	
-	var velocity = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	var move_left = "move_left"
+	var move_right = "move_right"
+	var move_up = "move_up"
+	var move_down = "move_down"
+	if is_horizontal_switched:
+		move_left = "move_right"
+		move_right = "move_left"
+	if is_vertical_switched:
+		move_up = "move_down"
+		move_down = "move_up"
+	var velocity = Input.get_vector(move_left, move_right, move_up, move_down)
 	
 	melee_timeout_counter += delta
 	dash_timeout_timer += delta
