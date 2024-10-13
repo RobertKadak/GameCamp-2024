@@ -21,6 +21,7 @@ func is_coliding(area: Area2D):
 		if(area.overlaps_area(i)):
 			return true
 		return false
+
 func is_level_clear():
 	var enemies = get_tree().get_nodes_in_group("Enemy")
 	return len(enemies) == 0
@@ -42,8 +43,11 @@ func generate_objects():
 			var object = object_resource.instantiate()
 			object.position = Vector2(x, y)
 			if(!is_coliding(object.get_node("Area2D"))):
+				add_child(object)
 				$NavigationRegion2D.add_child(object)
 				count -=1
+			else:
+				object.queue_free()
 		# Might add some constriction checks
 
 func clear():
