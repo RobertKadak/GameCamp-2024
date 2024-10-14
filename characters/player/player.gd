@@ -147,9 +147,9 @@ func melee_animations(velocity: Vector2) -> void:
 		
 		for body in _melee.get_overlapping_bodies():
 			if body.is_in_group("Boss"):
-				body.receive_damage(1)
+				body.receive_damage(2)
 			if body.is_in_group("Enemy"):
-				body.receive_damage(1)
+				body.receive_damage(2)
 		
 		i_hate_godot = 0
 		_animated_sprite.play("melee" + degen)

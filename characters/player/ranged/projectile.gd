@@ -3,7 +3,7 @@ extends Area2D
 @export var speed = 800
 @export var lifetime = 2
 @export var lifetime_counter = 0
-@export var damage = .01
+@export var damage = .1
 @export var direction = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.

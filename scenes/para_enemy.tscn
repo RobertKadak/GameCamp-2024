@@ -39,14 +39,17 @@ size = Vector2(20, 109.5)
 scale = Vector2(2.1, 2.1)
 collision_layer = 2
 script = ExtResource("1_5j1i1")
-health = 20
+health = 7
 attack_timeout = 1
 damage = 3
-speed = 150.0
+speed = 250.0
+freq = 15
+size = 300
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0.476191, 6.66667)
 scale = Vector2(0.25, 0.25)
-polygon = PackedVector2Array(-53, -55, 45, -55, 46, 58, -49, 57)
+polygon = PackedVector2Array(-53, -55, 45, -55, 47.6191, 15.2381, -53.3333, 17.1429)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_postprocessing = 1

@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @export var target_to_chase: CharacterBody2D
-@export var health : int = 5 
+@export var health = 5 
 @export var attacking = false
 @export var since_last_attack = 0
 @export var attack_timeout = 3
@@ -14,13 +14,16 @@ extends CharacterBody2D
 
 @export var speed = 180.0
 
+@export var freq = 10
+@export var size = 70
+
 func _ready() -> void:
 	$AnimatedSprite2D.play("walk")
 
 func _physics_process(_delta: float) -> void:
 	navigation_agent.target_position = target_to_chase.global_position
-	# with random movement: # velocity = global_position.direction_to(navigation_agent.get_next_path_position() + Vector2(sin(tmptime + 123) * 10, sin(tmptime + 321) * 70)) * speed
-	velocity = global_position.direction_to(navigation_agent.get_next_path_position()) * speed
+	velocity = global_position.direction_to(navigation_agent.get_next_path_position() + Vector2(0, sin(tmptime * freq) * size)) * speed
+	#velocity = global_position.direction_to(navigation_agent.get_next_path_position()) * speed
 	
 	if since_last_flip > .1:
 		if velocity.x != 0:
@@ -47,7 +50,7 @@ func attack():
 	$AnimatedSprite2D.play("attack")
 	player.health -= damage
 
-func receive_damage(hp: int):
+func receive_damage(hp):
 	health -= hp
 	
 	if health <= 0:

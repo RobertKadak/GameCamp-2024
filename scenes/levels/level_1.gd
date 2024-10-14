@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var enemy = preload("res://scenes/enemy.tscn")
 @onready var miniboss = preload("res://scenes/boss_enemy.tscn")
+@onready var para_enemy = preload("res://scenes/para_enemy.tscn")
 
 @export var box_region_start: Node2D
 @export var box_region_end: Node2D
@@ -55,8 +56,10 @@ func generate_mobs():
 		var x = randi_range(region_start_node.position.x, region_end_node.position.x)
 		var y = randi_range(region_start_node.position.y, region_end_node.position.y)
 		var mob
-		if(randi()%3 == 0):
+		if(randi()%25 == 0):
 			mob = miniboss.instantiate()
+		elif randi()%10 == 0:
+			mob = para_enemy.instantiate()
 		else:
 			mob = enemy.instantiate()
 		mob.position = Vector2(x, y)

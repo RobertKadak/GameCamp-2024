@@ -39,9 +39,10 @@ size = Vector2(20, 109.5)
 scale = Vector2(2.1, 2.1)
 collision_layer = 2
 script = ExtResource("1_vd5t4")
-health = 50
-damage = 10
-speed = 200.0
+health = 15
+attack_timeout = 5
+damage = 7
+speed = 120.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-53, -55, 45, -55, 46, 58, -49, 57)
