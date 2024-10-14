@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bhd3ue5dddjne"]
+[gd_scene load_steps=11 format=3 uid="uid://bhd3ue5dddjne"]
 
 [ext_resource type="PackedScene" path="res://scenes/levels/stop_watch.tscn" id="2_qk4hc"]
 [ext_resource type="PackedScene" uid="uid://df3muplc0mal8" path="res://scenes/levels/hud.tscn" id="3_wvtcs"]
 [ext_resource type="PackedScene" uid="uid://cjnjct76im3qy" path="res://characters/player/player.tscn" id="4_ayyir"]
 [ext_resource type="PackedScene" uid="uid://4tbot0pb2xdg" path="res://scenes/enemy.tscn" id="5_30jrr"]
 [ext_resource type="Texture2D" uid="uid://c00224xebfjt7" path="res://assets/fuckass_room.png" id="6_df30o"]
+[ext_resource type="Script" path="res://scenes/boss_mode/next_level.gd" id="7_hysgs"]
 [ext_resource type="PackedScene" uid="uid://dcybrwwl41s8p" path="res://scenes/next_level.tscn" id="7_q71p3"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_d840p"]
@@ -73,4 +74,4 @@ texture = ExtResource("6_df30o")
 
 [node name="nextLevel" parent="." instance=ExtResource("7_q71p3")]
 position = Vector2(895, -33)
-script = null
+script = ExtResource("7_hysgs")
