@@ -150,6 +150,8 @@ func melee_animations(velocity: Vector2) -> void:
 				body.receive_damage(2)
 			if body.is_in_group("Enemy"):
 				body.receive_damage(2)
+			if body.is_in_group("EnemySpawner"):
+				body.do_damage(2)
 		
 		i_hate_godot = 0
 		_animated_sprite.play("melee" + degen)
