@@ -66,7 +66,7 @@ ranged_timeout = 1
 dash_timeout = 3
 
 [node name="enemy" parent="." node_paths=PackedStringArray("target_to_chase") instance=ExtResource("5_30jrr")]
-position = Vector2(-775, 0)
+position = Vector2(-452, 0)
 target_to_chase = NodePath("../Player")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -78,4 +78,11 @@ position = Vector2(895, -33)
 script = ExtResource("7_hysgs")
 
 [node name="EnemySpawner" parent="." instance=ExtResource("8_nxnnu")]
-position = Vector2(-331, -206)
+position = Vector2(-782, -296)
+
+[node name="EnemySpawner2" parent="." instance=ExtResource("8_nxnnu")]
+position = Vector2(-782, 386)
+
+[node name="EnemySpawner3" parent="." instance=ExtResource("8_nxnnu")]
+position = Vector2(-627, -2)
+enemy_type = 1
