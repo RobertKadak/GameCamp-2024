@@ -7,8 +7,11 @@
 
 [node name="BossProjectile" type="Area2D"]
 scale = Vector2(0.4, 0.4)
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_udepa")
 speed = 500
+lifetime = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.100257, 0.1)

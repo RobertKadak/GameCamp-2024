@@ -72,19 +72,33 @@ texture = ExtResource("5_nm6r7")
 position = Vector2(895, -33)
 script = null
 
-[node name="Boss" parent="." node_paths=PackedStringArray("target", "target2", "source") instance=ExtResource("7_81uao")]
+[node name="Boss" parent="." node_paths=PackedStringArray("target", "target2", "target3", "target4", "source", "source2") instance=ExtResource("7_81uao")]
 position = Vector2(-418, 4.00001)
 scale = Vector2(0.4, 0.4)
 target = NodePath("../Target1")
 target2 = NodePath("../Target2")
-source = NodePath("../Source")
+target3 = NodePath("../Target3")
+target4 = NodePath("../Target4")
+source = NodePath("Source")
+source2 = NodePath("Source2")
 health = 150
 
-[node name="Source" type="Node2D" parent="."]
-position = Vector2(-81, -193)
+[node name="Source" type="Node2D" parent="Boss"]
+position = Vector2(842.5, -492.5)
+scale = Vector2(2.5, 2.5)
+
+[node name="Source2" type="Node2D" parent="Boss"]
+position = Vector2(-817.5, 1012.5)
+scale = Vector2(2.5, 2.5)
 
 [node name="Target1" type="Node2D" parent="."]
-position = Vector2(873, -422)
+position = Vector2(47, -412)
 
 [node name="Target2" type="Node2D" parent="."]
-position = Vector2(869, 492)
+position = Vector2(869, 50)
+
+[node name="Target3" type="Node2D" parent="."]
+position = Vector2(52, 50)
+
+[node name="Target4" type="Node2D" parent="."]
+position = Vector2(862, 488)

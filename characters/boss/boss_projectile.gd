@@ -20,7 +20,8 @@ func _process(delta: float) -> void:
 	
 	for body in get_overlapping_bodies():
 		if body.is_in_group("Player"):
-			body.receive_damage(damage)
+			body.health -= damage
+			queue_free()
 	
 	if lifetime_counter > lifetime:
 		queue_free()
