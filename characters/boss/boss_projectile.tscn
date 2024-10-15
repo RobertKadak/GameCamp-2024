@@ -6,7 +6,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_vcq1d"]
 
 [node name="BossProjectile" type="Area2D"]
+scale = Vector2(0.4, 0.4)
 script = ExtResource("1_udepa")
+speed = 500
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.100257, 0.1)
