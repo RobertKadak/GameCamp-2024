@@ -191,7 +191,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f42hs"]
-size = Vector2(128, 128)
+size = Vector2(91, 92)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1hmyh"]
 animations = [{
@@ -225,6 +225,7 @@ sprite_frames = SubResource("SpriteFrames_wbfjh")
 animation = &"walk2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 5)
 shape = SubResource("RectangleShape2D_f42hs")
 
 [node name="Melee" type="Area2D" parent="."]

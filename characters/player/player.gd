@@ -154,7 +154,7 @@ func discharge_ranged(delta: float):
 func melee_animations(velocity: Vector2) -> void:
 	var position_to_mouse = get_global_mouse_position() - global_position
 	var keyboard_aim_dir = Vector2.ZERO
-			
+
 	if Input.is_action_pressed("aim_up"):
 		keyboard_aim_dir += Vector2.UP
 	if Input.is_action_pressed("aim_right"):
