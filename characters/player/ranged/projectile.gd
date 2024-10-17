@@ -22,5 +22,9 @@ func _process(delta: float) -> void:
 		if body.is_in_group("Boss"):
 			body.receive_damage(damage)
 	
+	for body in get_overlapping_areas():
+		if body.is_in_group("EnemySpawner"):
+			body.do_damage(damage)
+	
 	if lifetime_counter > lifetime:
 		queue_free()

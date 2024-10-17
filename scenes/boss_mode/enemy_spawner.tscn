@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://df1etdym1338c"]
+
+[ext_resource type="Script" path="res://scenes/boss_mode/enemy_spawner.gd" id="1_5ni15"]
+[ext_resource type="Texture2D" uid="uid://j4b1ad5ir1p" path="res://assets/tube.png" id="2_uhmo1"]
+[ext_resource type="Texture2D" uid="uid://bs2kq5id3dyie" path="res://assets/tube2.png" id="3_h3msb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5nbn1"]
+size = Vector2(162, 363)
+
+[node name="EnemySpawner" type="Area2D" groups=["EnemySpawner"]]
+scale = Vector2(0.33, 0.33)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_5ni15")
+
+[node name="FullSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_uhmo1")
+
+[node name="HalfSprite" type="Sprite2D" parent="."]
+position = Vector2(50, 0)
+texture = ExtResource("3_h3msb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 5.5)
+shape = SubResource("RectangleShape2D_5nbn1")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

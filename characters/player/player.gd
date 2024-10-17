@@ -124,8 +124,23 @@ func discharge_ranged(delta: float):
 			world.add_child(projectile)
 			
 			var position_to_mouse = get_global_mouse_position() - global_position
+			var keyboard_aim_dir = Vector2.ZERO
+			
+			if Input.is_action_pressed("aim_up"):
+				keyboard_aim_dir += Vector2.UP
+			if Input.is_action_pressed("aim_right"):
+				keyboard_aim_dir += Vector2.RIGHT
+			if Input.is_action_pressed("aim_down"):
+				keyboard_aim_dir += Vector2.DOWN
+			if Input.is_action_pressed("aim_left"):
+				keyboard_aim_dir += Vector2.LEFT
+			
 			projectile.global_position = global_position
-			projectile.direction = position_to_mouse.normalized()
+			
+			if keyboard_aim_dir == Vector2.ZERO:
+				projectile.direction = position_to_mouse.normalized()
+			else:
+				projectile.direction = keyboard_aim_dir.normalized()
 				
 			ranged_timeout_counter = 0
 			melee_timeout_counter = 0
@@ -138,9 +153,24 @@ func discharge_ranged(delta: float):
 
 func melee_animations(velocity: Vector2) -> void:
 	var position_to_mouse = get_global_mouse_position() - global_position
+	var keyboard_aim_dir = Vector2.ZERO
+
+	if Input.is_action_pressed("aim_up"):
+		keyboard_aim_dir += Vector2.UP
+	if Input.is_action_pressed("aim_right"):
+		keyboard_aim_dir += Vector2.RIGHT
+	if Input.is_action_pressed("aim_down"):
+		keyboard_aim_dir += Vector2.DOWN
+	if Input.is_action_pressed("aim_left"):
+		keyboard_aim_dir += Vector2.LEFT
 	
-	var melee_attack_vector = position_to_mouse.normalized() * melee_attack_range
-	_melee.global_position = global_position + melee_attack_vector
+	# UP, LEFT diagonal not working
+	if keyboard_aim_dir == Vector2.ZERO:
+		var melee_attack_vector = position_to_mouse.normalized() * melee_attack_range
+		_melee.global_position = global_position + melee_attack_vector
+	else:
+		var melee_attack_vector = keyboard_aim_dir.normalized() * melee_attack_range
+		_melee.global_position = global_position + melee_attack_vector
 	
 	if Input.is_action_just_pressed("attack_melee") and melee_timeout_counter > melee_timeout:
 		melee_timeout_counter = 0
@@ -150,6 +180,8 @@ func melee_animations(velocity: Vector2) -> void:
 				body.receive_damage(2)
 			if body.is_in_group("Enemy"):
 				body.receive_damage(2)
+			if body.is_in_group("EnemySpawner"):
+				body.do_damage(2)
 		
 		i_hate_godot = 0
 		_animated_sprite.play("melee" + degen)

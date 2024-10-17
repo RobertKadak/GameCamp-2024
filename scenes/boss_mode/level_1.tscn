@@ -1,0 +1,111 @@
+[gd_scene load_steps=14 format=3 uid="uid://bhd3ue5dddjne"]
+
+[ext_resource type="PackedScene" path="res://scenes/levels/stop_watch.tscn" id="2_qk4hc"]
+[ext_resource type="PackedScene" uid="uid://df3muplc0mal8" path="res://scenes/levels/hud.tscn" id="3_wvtcs"]
+[ext_resource type="PackedScene" uid="uid://cjnjct76im3qy" path="res://characters/player/player.tscn" id="4_ayyir"]
+[ext_resource type="PackedScene" uid="uid://4tbot0pb2xdg" path="res://scenes/enemy.tscn" id="5_30jrr"]
+[ext_resource type="Texture2D" uid="uid://c00224xebfjt7" path="res://assets/fuckass_room.png" id="6_df30o"]
+[ext_resource type="Script" path="res://scenes/boss_mode/next_level.gd" id="7_hysgs"]
+[ext_resource type="PackedScene" uid="uid://dcybrwwl41s8p" path="res://scenes/next_level.tscn" id="7_q71p3"]
+[ext_resource type="PackedScene" uid="uid://djdrkkd1p0qdp" path="res://scenes/boss_mode/level_2.tscn" id="8_iit0c"]
+[ext_resource type="PackedScene" uid="uid://df1etdym1338c" path="res://scenes/boss_mode/enemy_spawner.tscn" id="8_nxnnu"]
+[ext_resource type="PackedScene" uid="uid://bpvp2snhhba48" path="res://scenes/para_enemy.tscn" id="9_q30lv"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_d840p"]
+vertices = PackedVector2Array(928, 516.75, -934, 516.75, -934, -511.75, 928, -511.75)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-961, -539, 957, -542, 959, 542, -960, 536, -960.813, -337.367)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wk18b"]
+size = Vector2(21.1639, 27.5907)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hh3uy"]
+size = Vector2(31.6015, 255.168)
+
+[node name="level1" type="Node2D"]
+
+[node name="StopWatch" parent="." groups=["StopWatch"] instance=ExtResource("2_qk4hc")]
+
+[node name="HUD" parent="." instance=ExtResource("3_wvtcs")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
+position = Vector2(-1, -1)
+scale = Vector2(1.00527, 0.993624)
+navigation_polygon = SubResource("NavigationPolygon_d840p")
+
+[node name="walls" type="Node2D" parent="NavigationRegion2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D/walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/walls/StaticBody2D"]
+position = Vector2(-0.994758, 793.057)
+scale = Vector2(90, 20)
+shape = SubResource("RectangleShape2D_wk18b")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="NavigationRegion2D/walls/StaticBody2D"]
+position = Vector2(-4.97379, -756.826)
+scale = Vector2(90, 20)
+shape = SubResource("RectangleShape2D_wk18b")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="NavigationRegion2D/walls/StaticBody2D"]
+position = Vector2(-1199.17, -20.1285)
+rotation = 1.5708
+scale = Vector2(60, 2)
+shape = SubResource("RectangleShape2D_hh3uy")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="NavigationRegion2D/walls/StaticBody2D"]
+position = Vector2(1181.77, 6.0385)
+rotation = 1.5708
+scale = Vector2(60, 2)
+shape = SubResource("RectangleShape2D_hh3uy")
+
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("4_ayyir")]
+position = Vector2(814, -33)
+ranged_timeout = 1
+dash_timeout = 3
+
+[node name="enemy" parent="." node_paths=PackedStringArray("target_to_chase") instance=ExtResource("5_30jrr")]
+position = Vector2(-452, 0)
+target_to_chase = NodePath("../Player")
+
+[node name="enemy4" parent="." node_paths=PackedStringArray("target_to_chase") instance=ExtResource("5_30jrr")]
+position = Vector2(-171, 0)
+target_to_chase = NodePath("../Player")
+
+[node name="enemy5" parent="." node_paths=PackedStringArray("target_to_chase") instance=ExtResource("5_30jrr")]
+position = Vector2(-516, -218)
+target_to_chase = NodePath("../Player")
+
+[node name="enemy6" parent="." node_paths=PackedStringArray("target_to_chase") instance=ExtResource("5_30jrr")]
+position = Vector2(-516, 218)
+target_to_chase = NodePath("../Player")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+show_behind_parent = true
+texture = ExtResource("6_df30o")
+
+[node name="nextLevel" parent="." instance=ExtResource("7_q71p3")]
+position = Vector2(895, -33)
+script = ExtResource("7_hysgs")
+next_level = ExtResource("8_iit0c")
+
+[node name="EnemySpawner" parent="." instance=ExtResource("8_nxnnu")]
+position = Vector2(-782, -296)
+
+[node name="EnemySpawner2" parent="." instance=ExtResource("8_nxnnu")]
+position = Vector2(-782, 386)
+
+[node name="EnemySpawner3" parent="." instance=ExtResource("8_nxnnu")]
+position = Vector2(-627, -2)
+enemy_type = 1
+
+[node name="enemy2" parent="." node_paths=PackedStringArray("target_to_chase") instance=ExtResource("9_q30lv")]
+position = Vector2(-312, 133)
+target_to_chase = NodePath("../Player")
+
+[node name="enemy3" parent="." node_paths=PackedStringArray("target_to_chase") instance=ExtResource("9_q30lv")]
+position = Vector2(-312, -133)
+target_to_chase = NodePath("../Player")
