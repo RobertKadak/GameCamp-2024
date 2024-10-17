@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://djdrkkd1p0qdp"]
+[gd_scene load_steps=13 format=3 uid="uid://djdrkkd1p0qdp"]
 
 [ext_resource type="PackedScene" path="res://scenes/levels/stop_watch.tscn" id="1_07n1f"]
 [ext_resource type="PackedScene" uid="uid://df3muplc0mal8" path="res://scenes/levels/hud.tscn" id="2_j1062"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dcybrwwl41s8p" path="res://scenes/next_level.tscn" id="6_6idn2"]
 [ext_resource type="Script" path="res://scenes/boss_mode/next_level.gd" id="7_d65qk"]
 [ext_resource type="PackedScene" uid="uid://df1etdym1338c" path="res://scenes/boss_mode/enemy_spawner.tscn" id="8_2wdtm"]
+[ext_resource type="PackedScene" uid="uid://5quxcqg3k5gm" path="res://scenes/boss_mode/level_3.tscn" id="8_n16qf"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_d840p"]
 vertices = PackedVector2Array(928, 516.75, -934, 516.75, -934, -511.75, 928, -511.75)
@@ -77,6 +78,7 @@ texture = ExtResource("5_i7iy5")
 [node name="nextLevel" parent="." instance=ExtResource("6_6idn2")]
 position = Vector2(895, -33)
 script = ExtResource("7_d65qk")
+next_level = ExtResource("8_n16qf")
 
 [node name="EnemySpawner" parent="." instance=ExtResource("8_2wdtm")]
 position = Vector2(-331, -206)
