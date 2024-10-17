@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bhd3ue5dddjne"]
+[gd_scene load_steps=13 format=3 uid="uid://bhd3ue5dddjne"]
 
 [ext_resource type="PackedScene" path="res://scenes/levels/stop_watch.tscn" id="2_qk4hc"]
 [ext_resource type="PackedScene" uid="uid://df3muplc0mal8" path="res://scenes/levels/hud.tscn" id="3_wvtcs"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scenes/boss_mode/next_level.gd" id="7_hysgs"]
 [ext_resource type="PackedScene" uid="uid://dcybrwwl41s8p" path="res://scenes/next_level.tscn" id="7_q71p3"]
 [ext_resource type="PackedScene" uid="uid://df1etdym1338c" path="res://scenes/boss_mode/enemy_spawner.tscn" id="8_nxnnu"]
+[ext_resource type="PackedScene" uid="uid://bpvp2snhhba48" path="res://scenes/para_enemy.tscn" id="9_q30lv"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_d840p"]
 vertices = PackedVector2Array(928, 516.75, -934, 516.75, -934, -511.75, 928, -511.75)
@@ -69,6 +70,18 @@ dash_timeout = 3
 position = Vector2(-452, 0)
 target_to_chase = NodePath("../Player")
 
+[node name="enemy4" parent="." node_paths=PackedStringArray("target_to_chase") instance=ExtResource("5_30jrr")]
+position = Vector2(-171, 0)
+target_to_chase = NodePath("../Player")
+
+[node name="enemy5" parent="." node_paths=PackedStringArray("target_to_chase") instance=ExtResource("5_30jrr")]
+position = Vector2(-516, -218)
+target_to_chase = NodePath("../Player")
+
+[node name="enemy6" parent="." node_paths=PackedStringArray("target_to_chase") instance=ExtResource("5_30jrr")]
+position = Vector2(-516, 218)
+target_to_chase = NodePath("../Player")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 show_behind_parent = true
 texture = ExtResource("6_df30o")
@@ -86,3 +99,11 @@ position = Vector2(-782, 386)
 [node name="EnemySpawner3" parent="." instance=ExtResource("8_nxnnu")]
 position = Vector2(-627, -2)
 enemy_type = 1
+
+[node name="enemy2" parent="." node_paths=PackedStringArray("target_to_chase") instance=ExtResource("9_q30lv")]
+position = Vector2(-312, 133)
+target_to_chase = NodePath("../Player")
+
+[node name="enemy3" parent="." node_paths=PackedStringArray("target_to_chase") instance=ExtResource("9_q30lv")]
+position = Vector2(-312, -133)
+target_to_chase = NodePath("../Player")
